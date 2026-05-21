@@ -1,0 +1,1202 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Proposta · João Prudential · Cítara</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Montserrat:wght@300;400;500;600;700&family=Fraunces:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:        #050416;
+    --bg-1:      #0A0A1F;
+    --bg-2:      #11122B;
+    --fg-1:      #FFFFFF;
+    --fg-2:      rgba(255,255,255,0.72);
+    --fg-3:      rgba(255,255,255,0.5);
+    --fg-4:      rgba(255,255,255,0.32);
+    --accent:    #E5348B;
+    --accent-2:  #FF4A9C;
+    --accent-3:  #CC3366;
+    --accent-w:  rgba(229,52,139,0.12);
+    --border:    rgba(255,255,255,0.08);
+    --border-2:  rgba(255,255,255,0.14);
+    --max:       1180px;
+    --read:      66ch;
+    --font-d:    'Poppins', system-ui, sans-serif;
+    --font-b:    'Montserrat', system-ui, sans-serif;
+    --font-e:    'Fraunces', Georgia, serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--fg-1);
+    font-family: var(--font-b);
+    font-size: 15px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; text-decoration: none; }
+  em.fr { font-family: var(--font-e); font-style: italic; font-weight: 400; }
+  ::selection { background: var(--accent); color: #FFFFFF; }
+
+  /* ========== TOP NAV ========== */
+  .topnav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(5,4,22,0.78);
+    backdrop-filter: blur(16px) saturate(1.2);
+    -webkit-backdrop-filter: blur(16px) saturate(1.2);
+    border-bottom: 1px solid var(--border);
+  }
+  .topnav-inner {
+    max-width: var(--max); margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px 40px; height: 64px;
+  }
+  .topnav .brand { display: flex; align-items: center; gap: 12px; }
+  .topnav .brand img { height: 24px; width: auto; display: block; }
+  .topnav .meta { font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fg-3); }
+  .topnav .links { display: flex; gap: 28px; }
+  .topnav .links a {
+    font-size: 12px; font-weight: 500; color: var(--fg-3);
+    transition: color .2s ease;
+  }
+  .topnav .links a:hover { color: var(--fg-1); }
+  @media (max-width: 820px) {
+    .topnav .links { display: none; }
+    .topnav-inner { padding: 12px 20px; }
+  }
+
+  /* ========== LAYOUT ========== */
+  section {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 72px 40px;
+    position: relative;
+  }
+  section + section { border-top: 1px solid var(--border); }
+  @media (max-width: 720px) { section { padding: 56px 24px; } }
+
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 12px;
+    font-family: var(--font-b);
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 24px;
+  }
+  .eyebrow::before {
+    content: ""; width: 32px; height: 1px;
+    background: var(--accent); display: block;
+  }
+  h2 {
+    font-family: var(--font-d);
+    font-size: clamp(36px, 5vw, 60px);
+    font-weight: 600;
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    color: var(--fg-1);
+    margin: 0 0 24px;
+    text-wrap: balance;
+    max-width: 20ch;
+  }
+  h3 {
+    font-family: var(--font-d);
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    color: var(--fg-1);
+    margin: 0 0 12px;
+  }
+  p.lead {
+    font-size: 19px; line-height: 1.55; color: var(--fg-2);
+    max-width: var(--read);
+    margin: 0 0 24px;
+    font-weight: 400;
+  }
+  p { margin: 0 0 16px; color: var(--fg-2); max-width: var(--read); }
+
+  .twocol {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  @media (max-width: 900px) {
+    .twocol { grid-template-columns: 1fr; gap: 40px; }
+  }
+
+  /* ========== COVER ========== */
+  .cover {
+    min-height: 100vh;
+    padding: 0;
+    max-width: 100%;
+    display: flex;
+    align-items: stretch;
+    position: relative;
+    overflow: hidden;
+    border-top: none;
+  }
+  .cover::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 80% 10%, rgba(229,52,139,0.18) 0%, transparent 55%),
+      radial-gradient(ellipse 50% 60% at 10% 90%, rgba(229,52,139,0.08) 0%, transparent 60%),
+      var(--bg);
+    z-index: 0;
+  }
+  .cover::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 72px 72px;
+    mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black 30%, transparent 90%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black 30%, transparent 90%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .cover-inner {
+    position: relative; z-index: 1;
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 64px 40px;
+    width: 100%;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    gap: 40px;
+  }
+  .cover-top {
+    display: flex; align-items: flex-start; justify-content: space-between;
+  }
+  .cover-top img { height: 48px; width: auto; display: block; }
+  .cover-top .ref {
+    text-align: right;
+    font-family: var(--font-b);
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--fg-3);
+  }
+  .cover-top .ref strong { display: block; color: var(--accent); margin-bottom: 4px; }
+  .cover-mid { display: flex; align-items: center; }
+  .cover-mid .body { max-width: 940px; }
+  .cover-mid .tag {
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 999px;
+    background: var(--accent-w);
+    border: 1px solid rgba(229,52,139,0.35);
+    color: var(--accent-2);
+    font-family: var(--font-b);
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    margin-bottom: 32px;
+  }
+  .cover-mid h1 {
+    font-family: var(--font-d);
+    font-size: clamp(48px, 7.5vw, 108px);
+    font-weight: 700;
+    line-height: 0.98;
+    letter-spacing: -0.035em;
+    margin: 0;
+    text-wrap: balance;
+  }
+  .cover-mid h1 em { font-family: var(--font-e); font-style: italic; font-weight: 400; color: var(--accent); }
+  .cover-mid .sub {
+    font-family: var(--font-d);
+    font-size: clamp(20px, 2.2vw, 28px);
+    font-weight: 500;
+    color: var(--fg-2);
+    margin: 24px 0 0;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+  }
+  .cover-mid .lede {
+    margin-top: 28px;
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--fg-2);
+    max-width: 560px;
+  }
+  .cover-bottom {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    padding-top: 28px;
+    border-top: 1px solid var(--border);
+  }
+  .cover-bottom .item .k {
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--fg-3);
+    margin-bottom: 8px;
+  }
+  .cover-bottom .item .v {
+    font-family: var(--font-d);
+    font-size: 16px; font-weight: 500;
+    color: var(--fg-1);
+  }
+  @media (max-width: 720px) {
+    .cover-bottom { grid-template-columns: 1fr 1fr; gap: 16px; }
+  }
+
+  /* ========== PULL QUOTE (destaque editorial) ========== */
+  .pull {
+    margin: 48px 0 0;
+    padding: 32px 0 32px 32px;
+    border-left: 2px solid var(--accent);
+    font-family: var(--font-d);
+    font-size: clamp(26px, 3.4vw, 40px);
+    font-weight: 500;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--fg-1);
+    max-width: 760px;
+    text-wrap: balance;
+  }
+  .pull em { font-family: var(--font-e); font-style: italic; font-weight: 400; color: var(--accent); }
+
+  /* ========== CARDS (desafio) ========== */
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+    margin-top: 40px;
+    border-top: 1px solid var(--border);
+    border-left: 1px solid var(--border);
+  }
+  @media (max-width: 720px) { .cards { grid-template-columns: 1fr; } }
+  .card {
+    padding: 36px 32px;
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: transparent;
+    transition: background .25s ease;
+    position: relative;
+  }
+  .card:hover { background: rgba(229,52,139,0.04); }
+  .card .num {
+    font-family: var(--font-b);
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.18em; color: var(--accent);
+    margin-bottom: 18px;
+  }
+  .card h4 {
+    font-family: var(--font-d);
+    font-size: 19px; font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    margin: 0 0 10px;
+    color: var(--fg-1);
+    text-wrap: balance;
+  }
+  .card p { font-size: 14px; line-height: 1.6; color: var(--fg-2); margin: 0; max-width: none; }
+
+  /* ========== PILLARS ========== */
+  .pillars {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 48px;
+  }
+  @media (max-width: 900px) { .pillars { grid-template-columns: 1fr; } }
+  .pillar {
+    padding: 40px 32px;
+    background: var(--bg-1);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color .25s ease, transform .25s ease;
+  }
+  .pillar:hover { border-color: rgba(229,52,139,0.35); transform: translateY(-2px); }
+  .pillar::before {
+    content: "";
+    position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, transparent 0%, var(--accent) 50%, transparent 100%);
+    opacity: 0;
+    transition: opacity .25s ease;
+  }
+  .pillar:hover::before { opacity: 1; }
+  .pillar .roman {
+    font-family: var(--font-e);
+    font-style: italic; font-weight: 400;
+    font-size: 32px; color: var(--accent);
+    margin-bottom: 16px;
+    line-height: 1;
+  }
+  .pillar h4 {
+    font-family: var(--font-d);
+    font-size: 24px; font-weight: 600;
+    letter-spacing: -0.015em;
+    margin: 0 0 12px;
+    color: var(--fg-1);
+  }
+  .pillar p { font-size: 14px; color: var(--fg-2); margin: 0 0 18px; }
+  .pillar ul {
+    list-style: none; padding: 0; margin: 0;
+    border-top: 1px solid var(--border);
+    padding-top: 16px;
+  }
+  .pillar ul li {
+    font-size: 13px; color: var(--fg-2);
+    padding: 8px 0;
+    border-bottom: 1px dashed rgba(255,255,255,0.06);
+    display: flex; gap: 10px; align-items: flex-start;
+  }
+  .pillar ul li:last-child { border-bottom: 0; }
+  .pillar ul li::before {
+    content: ""; width: 5px; height: 5px; border-radius: 999px;
+    background: var(--accent); margin-top: 8px; flex: 0 0 auto;
+  }
+
+  /* ========== TIMELINE 30 DIAS ========== */
+  .timeline {
+    margin-top: 48px;
+    border-top: 1px solid var(--border);
+  }
+  .step {
+    display: grid;
+    grid-template-columns: 140px 1fr 280px;
+    gap: 48px;
+    padding: 36px 0;
+    border-bottom: 1px solid var(--border);
+    align-items: start;
+  }
+  @media (max-width: 820px) {
+    .step { grid-template-columns: 1fr; gap: 12px; padding: 28px 0; }
+  }
+  .step .week {
+    font-family: var(--font-d);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: -0.005em;
+  }
+  .step .week .roman {
+    font-family: var(--font-e);
+    font-style: italic;
+    font-size: 36px;
+    color: var(--accent);
+    display: block;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .step .body h4 {
+    font-family: var(--font-d);
+    font-size: 22px; font-weight: 600;
+    letter-spacing: -0.015em;
+    margin: 0 0 8px;
+    color: var(--fg-1);
+  }
+  .step .body p { font-size: 14px; color: var(--fg-2); margin: 0; }
+  .step .deliv {
+    font-size: 12px;
+    color: var(--fg-3);
+    border-left: 1px solid var(--border);
+    padding-left: 24px;
+  }
+  .step .deliv strong {
+    display: block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--fg-2);
+    margin-bottom: 10px;
+  }
+  .step .deliv ul { list-style: none; padding: 0; margin: 0; }
+  .step .deliv li { padding: 4px 0; line-height: 1.5; }
+  @media (max-width: 820px) {
+    .step .deliv { border-left: 0; padding-left: 0; border-top: 1px solid var(--border); padding-top: 16px; margin-top: 8px; }
+  }
+
+  /* ========== RECOMENDAÇÃO ========== */
+  .decision {
+    margin-top: 48px;
+    padding: 56px 56px;
+    background:
+      radial-gradient(ellipse 40% 80% at 100% 0%, rgba(229,52,139,0.18) 0%, transparent 60%),
+      var(--bg-1);
+    border: 1px solid rgba(229,52,139,0.25);
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  .decision .tag {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: var(--accent-w);
+    border: 1px solid rgba(229,52,139,0.4);
+    color: var(--accent-2);
+    font-family: var(--font-b);
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+  .decision h3 {
+    font-family: var(--font-d);
+    font-size: clamp(28px, 3.6vw, 40px);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    margin: 0 0 16px;
+    text-wrap: balance;
+    max-width: 24ch;
+  }
+  .decision h3 em { font-family: var(--font-e); font-style: italic; font-weight: 400; color: var(--accent); }
+  .decision p { font-size: 16px; color: var(--fg-2); max-width: 64ch; margin: 0 0 24px; }
+  .decision-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+  }
+  @media (max-width: 720px) { .decision-grid { grid-template-columns: 1fr; gap: 20px; } }
+  .decision-grid .item { padding: 0 24px; border-right: 1px solid var(--border); }
+  .decision-grid .item:first-child { padding-left: 0; }
+  .decision-grid .item:last-child { border-right: 0; padding-right: 0; }
+  @media (max-width: 720px) {
+    .decision-grid .item { border-right: 0; padding: 0 0 20px; border-bottom: 1px solid var(--border); }
+    .decision-grid .item:last-child { border-bottom: 0; }
+  }
+  .decision-grid .k {
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--fg-3); margin-bottom: 8px;
+  }
+  .decision-grid .v {
+    font-family: var(--font-d);
+    font-size: 22px; font-weight: 600;
+    letter-spacing: -0.015em;
+    color: var(--fg-1);
+  }
+  .decision-grid .v small {
+    display: block;
+    font-family: var(--font-b);
+    font-size: 12px; font-weight: 500;
+    color: var(--fg-3);
+    margin-top: 4px;
+    letter-spacing: 0;
+  }
+  @media (max-width: 720px) { .decision { padding: 32px 24px; } }
+
+  /* ========== NEXT STEP ========== */
+  .next {
+    margin-top: 48px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 32px;
+    align-items: center;
+    padding: 28px 32px;
+    background: var(--bg-1);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+  }
+  @media (max-width: 720px) {
+    .next { grid-template-columns: 1fr; padding: 24px; }
+  }
+  .next .label {
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+  .next .text {
+    font-family: var(--font-d);
+    font-size: 17px; font-weight: 500;
+    letter-spacing: -0.005em;
+    color: var(--fg-1);
+    line-height: 1.4;
+  }
+  .next .cta {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 14px 24px;
+    border-radius: 999px;
+    background: var(--accent);
+    color: #FFFFFF;
+    font-family: var(--font-b);
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0;
+    transition: all .25s ease;
+    white-space: nowrap;
+  }
+  .next .cta:hover { background: var(--accent-2); transform: translateY(-1px); }
+  .next .cta svg { width: 16px; height: 16px; }
+
+  /* ========== FOOTER ========== */
+  .doc-footer {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 56px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid var(--border);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--fg-3);
+  }
+  .doc-footer img { height: 22px; opacity: 0.7; }
+  @media (max-width: 720px) {
+    .doc-footer { flex-direction: column; gap: 16px; padding: 32px 24px; text-align: center; }
+  }
+
+  /* ========== PHOTOS ========== */
+  .photo {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    background: var(--bg-2);
+    isolation: isolate;
+    border: 1px solid var(--border);
+  }
+  .photo img {
+    display: block; width: 100%; height: 100%; object-fit: cover;
+    filter: grayscale(0.55) contrast(1.05) brightness(0.92);
+    transition: filter .6s ease;
+  }
+  .photo:hover img { filter: grayscale(0.2) contrast(1.05) brightness(0.95); }
+  .photo::after {
+    content:""; position:absolute; inset:0;
+    background: linear-gradient(180deg, rgba(5,4,22,0) 55%, rgba(5,4,22,0.7) 100%);
+    pointer-events: none;
+  }
+  .photo .cap {
+    position: absolute; left: 14px; right: 14px; bottom: 12px;
+    z-index: 2;
+    font-family: var(--font-b);
+    font-size: 10px; font-weight: 600;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: rgba(255,255,255,0.78);
+  }
+  .photo .cap em { font-family: var(--font-e); font-style: italic; font-weight: 400; text-transform: none; letter-spacing: 0; color: var(--accent-2); }
+  .photo.tall  { aspect-ratio: 5/6; max-width: 360px; }
+  .photo.wide  { aspect-ratio: 16/10; }
+  .photo.square{ aspect-ratio: 1/1; max-width: 320px; }
+  .photo.thumb { aspect-ratio: 4/3; }
+
+  /* Side-by-side small editorial strip */
+  .photo-strip {
+    display: grid;
+    gap: 12px;
+    grid-template-columns: repeat(3, 1fr);
+    margin: 40px 0 0;
+  }
+  .photo-strip .photo { aspect-ratio: 4/5; border-radius: 6px; }
+  @media (max-width: 720px) {
+    .photo-strip { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  /* Override .twocol photo containment for leitura/tese to give big editorial weight */
+  .twocol .photo.tall { max-width: none; justify-self: stretch; }
+  @media (max-width: 900px) {
+    .twocol .photo.tall { justify-self: stretch; max-width: 100%; }
+  }
+
+  
+  /* Prudential card */
+  .prudential-card {
+    padding: 40px 32px;
+    background: linear-gradient(180deg, #FFFFFF 0%, #F5F7FA 100%);
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 8px;
+    color: #1A1A1A;
+    max-width: 340px;
+    justify-self: end;
+    display: flex; flex-direction: column; gap: 18px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+  }
+  @media (max-width: 900px) {
+    .prudential-card { justify-self: start; max-width: 320px; }
+  }
+  .prudential-label {
+    font-family: var(--font-b);
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: #006FB9;
+  }
+  .prudential-mark {
+    width: 100%; max-width: 240px;
+    height: auto; display: block;
+  }
+  .prudential-desc {
+    font-family: var(--font-b);
+    font-size: 14px; line-height: 1.55;
+    color: #2A2A2A;
+    border-top: 1px solid rgba(0,0,0,0.08);
+    padding-top: 16px;
+  }
+  .prudential-desc em {
+    font-family: var(--font-e);
+    font-style: italic; font-weight: 400;
+    color: #006FB9;
+  }
+
+  /* Brand strip (replaces photo-strip in escopo) */
+  .brand-strip {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    margin: 40px 0 0;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  @media (max-width: 720px) {
+    .brand-strip { grid-template-columns: 1fr; }
+  }
+  .brand-strip-item {
+    background: var(--bg-1);
+    padding: 28px 24px;
+    display: flex; flex-direction: column; gap: 12px;
+    align-items: flex-start;
+    min-height: 110px;
+  }
+  .brand-strip-item .k {
+    font-family: var(--font-b);
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--fg-3);
+  }
+  .brand-strip-item .v {
+    font-family: var(--font-d);
+    font-size: 17px; font-weight: 500;
+    color: var(--fg-1);
+    letter-spacing: -0.01em;
+  }
+  .brand-strip-logo {
+    height: 28px; width: auto; display: block;
+    filter: brightness(0) invert(1) opacity(0.85);
+  }
+
+  /* Editorial leitura/tese custom grid */
+  .editorial-split {
+    display: grid;
+    grid-template-columns: 1.6fr 0.7fr;
+    gap: 56px;
+    align-items: center;
+  }
+  .editorial-split.reverse { grid-template-columns: 0.7fr 1.6fr; }
+  @media (max-width: 900px) {
+    .editorial-split, .editorial-split.reverse { grid-template-columns: 1fr; gap: 32px; }
+  }
+  .editorial-split .text { display: flex; flex-direction: column; justify-content: flex-start; }
+  .editorial-split .frame {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    background: var(--bg-1);
+    border: 1px solid var(--border);
+    aspect-ratio: 1/1;
+    max-width: 300px;
+    width: 100%;
+    justify-self: end;
+  }
+  .editorial-split.reverse .frame { justify-self: start; }
+  @media (max-width: 900px) {
+    .editorial-split .frame, .editorial-split.reverse .frame { justify-self: start; max-width: 280px; }
+  }
+  .editorial-split .frame img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+    object-position: center 12%;
+  }
+  .editorial-split .frame::after {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(5,4,22,0) 50%, rgba(5,4,22,0.78) 100%);
+    pointer-events: none;
+  }
+  .editorial-split .frame .caption {
+    position: absolute; left: 28px; right: 28px; bottom: 24px;
+    z-index: 2;
+  }
+  .editorial-split .frame .caption .role {
+    font-family: var(--font-b);
+    font-size: 9px; font-weight: 700;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 6px;
+  }
+  .editorial-split .frame .caption .name {
+    font-family: var(--font-d);
+    font-size: 18px; font-weight: 600;
+    letter-spacing: -0.01em;
+    color: #FFFFFF;
+    line-height: 1.2;
+  }
+  .editorial-split .frame .caption .name em {
+    font-family: var(--font-e); font-style: italic; font-weight: 400; color: var(--accent-2);
+  }
+
+  /* Tese institutional card */
+  .tese-frame {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    background: linear-gradient(180deg, #FFFFFF 0%, #ECEFF3 100%);
+    color: #1A1A1A;
+    padding: 32px 28px;
+    max-width: 300px;
+    width: 100%;
+    justify-self: start;
+    aspect-ratio: 1/1;
+    display: flex; flex-direction: column;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+  }
+  @media (max-width: 900px) {
+    .tese-frame { max-width: 280px; }
+  }
+  .tese-frame .tese-eb {
+    font-family: var(--font-b);
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: #006FB9;
+    margin-bottom: 16px;
+  }
+  .tese-frame .tese-mark {
+    width: 100%; max-width: 180px;
+    height: auto; display: block;
+    margin-bottom: auto;
+  }
+  .tese-frame .tese-foot {
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(0,0,0,0.1);
+  }
+  .tese-frame .tese-foot p {
+    font-family: var(--font-b);
+    font-size: 12px; line-height: 1.5;
+    color: #2A2A2A;
+    margin: 0;
+    max-width: none;
+  }
+  .tese-frame .tese-foot .tag {
+    display: inline-block;
+    font-family: var(--font-b);
+    font-size: 9px; font-weight: 700;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: #006FB9;
+    margin-bottom: 6px;
+  }
+
+  /* ========== INVESTIMENTO ========== */
+  .price {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    overflow: hidden;
+    background: var(--bg-1);
+  }
+  @media (max-width: 720px) { .price { grid-template-columns: 1fr; } }
+  .price .col { padding: 36px 36px; }
+  .price .col + .col { border-left: 1px solid var(--border); background: linear-gradient(180deg, rgba(229,52,139,0.06), transparent 60%); }
+  @media (max-width: 720px) { .price .col + .col { border-left: 0; border-top: 1px solid var(--border); } }
+  .price .lbl { font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--fg-3); }
+  .price .total { font-family: var(--font-d); font-size: 14px; color: var(--fg-2); margin-top: 18px; }
+  .price .total .strike { text-decoration: line-through; color: var(--fg-4); margin-right: 8px; }
+  .price .big { font-family: var(--font-d); font-size: clamp(48px, 6vw, 72px); font-weight: 700; line-height: 1; letter-spacing: -0.035em; margin: 14px 0 6px; color: var(--fg-1); }
+  .price .big em { font-family: var(--font-e); font-style: italic; font-weight: 400; color: var(--accent); }
+  .price .big .small { font-size: 0.4em; font-weight: 500; color: var(--fg-3); letter-spacing: 0; vertical-align: middle; }
+  .price ul { list-style: none; padding: 0; margin: 24px 0 0; }
+  .price ul li { display: flex; justify-content: space-between; padding: 12px 0; border-top: 1px solid var(--border); font-size: 14px; color: var(--fg-2); }
+  .price ul li:last-child { border-bottom: 1px solid var(--border); }
+  .price ul li .v { color: var(--fg-1); font-family: var(--font-d); font-weight: 500; }
+  .price .note { margin-top: 18px; font-size: 12px; color: var(--fg-3); line-height: 1.55; }
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity .8s ease, transform .8s ease; }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+
+  /* Print */
+  @media print {
+    .topnav, .next .cta { display: none; }
+    section { break-inside: avoid; padding: 60px 40px; }
+    body { background: #FFFFFF; color: #000; }
+    .cover, .decision, .pillar, .next { background: #FFFFFF !important; color: #000 !important; border-color: #DDD !important; }
+    h2, h3, h4, .cover-mid h1 { color: #000 !important; }
+    em.fr, .pull em, .cover-mid h1 em, h3 em { color: var(--accent) !important; }
+    .pull { color: #000; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ TOPNAV ============ -->
+<nav class="topnav" aria-label="Navegação">
+  <div class="topnav-inner">
+    <a href="#capa" class="brand">
+      <img src="assets/logo-horizontal-branco.png" alt="Cítara">
+    </a>
+    <div class="links">
+      <a href="#leitura">Leitura</a>
+      <a href="#tese">Tese</a>
+      <a href="#sistema">Pilares</a>
+      <a href="#escopo">Escopo</a>
+      <a href="#plano">Plano</a>
+      <a href="#investimento">Investimento</a>
+    </div>
+    <div class="meta">Confidencial · v1.0</div>
+  </div>
+</nav>
+
+<!-- ============ CAPA ============ -->
+<section class="cover" id="capa" aria-label="Capa">
+  <div class="cover-inner">
+    <div class="cover-top">
+      <img src="assets/logo-horizontal-branco.png" alt="Cítara">
+      <div class="ref">
+        <strong>Proposta · 2026</strong>
+        Documento confidencial
+      </div>
+    </div>
+
+    <div class="cover-mid">
+      <div class="body">
+        <span class="tag">Proposta de Posicionamento</span>
+        <h1>Posicionamento<br>digital <em>consultivo</em>.</h1>
+        <p class="sub">João Prudential · Ribeirão Preto e região.</p>
+        <p class="lede">Uma operação de presença, autoridade e relacionamento para fortalecer a confiança, gerar lembrança e estimular indicações qualificadas.</p>
+      </div>
+    </div>
+
+    <div class="cover-bottom">
+      <div class="item">
+        <div class="k">Cliente</div>
+        <div class="v">João Prudential</div>
+      </div>
+      <div class="item">
+        <div class="k">Praça</div>
+        <div class="v">Ribeirão Preto · SP</div>
+      </div>
+      <div class="item">
+        <div class="k">Assinado por</div>
+        <div class="v">Cítara Marketing</div>
+      </div>
+      <div class="item">
+        <div class="k">Validade</div>
+        <div class="v">30 dias corridos</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 1. LEITURA ESTRATÉGICA ============ -->
+<section id="leitura" class="reveal">
+  <div class="eyebrow">01 · Leitura estratégica</div>
+  <h2>O ponto de partida.</h2>
+
+  <div class="editorial-split">
+    <div class="text">
+      <p class="lead">João já atua em um mercado em que confiança, relacionamento e reputação pesam mais do que volume bruto de leads.</p>
+      <p>A presença digital precisa reforçar o que sustenta a venda consultiva: <em class="fr">autoridade</em>, <em class="fr">proximidade</em> e <em class="fr">indicação</em>.</p>
+      <p>A recomendação é construir uma comunicação que faça clientes, parceiros e empresários lembrarem do João no momento certo, e pensarem: <em class="fr" style="color: var(--accent-2);">"essa pessoa precisa conhecer o João."</em></p>
+    </div>
+    <div class="frame">
+      <img src="assets/joao-portrait.jpg" alt="João, Life Planner Prudential">
+      <div class="caption">
+        <div class="role">Franqueado Prudential</div>
+        <div class="name">João, <em>Life Planner</em></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pull">
+    Não é uma operação de <em>posts</em>.<br>
+    É uma operação de <em>reputação</em>, <em>lembrança</em> e <em>relacionamento</em>.
+  </div>
+</section>
+
+<!-- ============ 2. A TESE ============ -->
+<section id="tese" class="reveal">
+  <div class="eyebrow">02 · A tese</div>
+  <h2>O João não vende seguro. <em class="fr" style="color: var(--accent);">Ele planeja vidas.</em></h2>
+
+  <div class="editorial-split reverse">
+    <div class="tese-frame">
+      <div class="tese-eb">Estrutura institucional</div>
+      <img src="assets/prudential-logo.png" alt="Prudential" class="tese-mark">
+      <div class="tese-foot">
+        <span class="tag">Franqueado oficial</span>
+        <p>Operando sob a <em>Prudential do Brasil</em>, uma das maiores seguradoras de vida do mundo. A autoridade institucional respalda cada conversa consultiva.</p>
+      </div>
+    </div>
+    <div class="text">
+      <p class="lead">João precisa ser percebido como <strong style="color: var(--fg-1); font-weight: 600;">Life Planner de confiança</strong> para famílias, empresários e parceiros da região.</p>
+      <p>Não vendedor de apólice. Não consultor de produto. <em class="fr">Conselheiro</em> que organiza patrimônio, sucessão, proteção familiar e tranquilidade financeira no longo prazo.</p>
+      <ul style="list-style: none; padding: 0; margin: 24px 0 0;">
+        <li style="padding: 14px 0; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: baseline;">
+          <span style="font-family: var(--font-d); font-size: 17px; font-weight: 500; color: var(--fg-1);">Autoridade</span>
+          <span style="font-size: 12px; color: var(--fg-3);">para validar</span>
+        </li>
+        <li style="padding: 14px 0; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: baseline;">
+          <span style="font-family: var(--font-d); font-size: 17px; font-weight: 500; color: var(--fg-1);">Proximidade</span>
+          <span style="font-size: 12px; color: var(--fg-3);">para gerar confiança</span>
+        </li>
+        <li style="padding: 14px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: baseline;">
+          <span style="font-family: var(--font-d); font-size: 17px; font-weight: 500; color: var(--fg-1);">Lembrança</span>
+          <span style="font-size: 12px; color: var(--fg-3);">para a base ativar no momento certo</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3. O SISTEMA ============ -->
+<section id="sistema" class="reveal">
+  <div class="eyebrow">03 · Os três pilares</div>
+  <h2>Três frentes, <em class="fr" style="color: var(--accent);">uma operação só</em>.</h2>
+  <p class="lead">A comunicação mensal do João não é dividida em "posts e stories". É dividida em três pilares estratégicos que dialogam entre si.</p>
+
+  <div class="pillars">
+    <div class="pillar">
+      <div class="roman">I.</div>
+      <h4>Autoridade</h4>
+      <p>Mostrar o João preparado, experiente e conectado a uma estrutura sólida, sem soar institucional.</p>
+      <ul>
+        <li>Bastidores de reuniões e atendimentos</li>
+        <li>Visitas a empresários e parceiros</li>
+        <li>Eventos, reconhecimento e conquistas</li>
+        <li>Explicações simples sobre proteção, sucessão e planejamento</li>
+      </ul>
+    </div>
+    <div class="pillar">
+      <div class="roman">II.</div>
+      <h4>Proximidade</h4>
+      <p>Preservar o lado pessoal do João. O cliente não enxerga um vendedor. Enxerga alguém presente, confiável e próximo.</p>
+      <ul>
+        <li>Rotina, café com cliente, estrada</li>
+        <li>Família, lifestyle, valores</li>
+        <li>Conexão com Ribeirão Preto e região</li>
+        <li>Bastidores do escritório</li>
+      </ul>
+    </div>
+    <div class="pillar">
+      <div class="roman">III.</div>
+      <h4>Lembrança</h4>
+      <p>Manter o João vivo na mente da base atual e dos leads quentes. O cliente pode não contratar hoje, mas precisa lembrar no momento certo.</p>
+      <ul>
+        <li>Reels curtos com falas fortes</li>
+        <li>Carrosséis educativos</li>
+        <li>Remarketing para públicos quentes</li>
+        <li>Campanhas de lembrança para a base</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4. ESCOPO MENSAL ============ -->
+<section id="escopo" class="reveal">
+  <div class="eyebrow">04 · Escopo mensal</div>
+  <h2>O que entra <em class="fr" style="color: var(--accent);">todo mês</em>.</h2>
+  <p class="lead">Três frentes integradas, operadas pelo mesmo squad. Sem cobrança por entregável. É uma operação contínua de posicionamento.</p>
+
+  <div class="pillars" style="margin-top: 24px;">
+    <div class="pillar">
+      <div class="roman">A.</div>
+      <h4>Social Media</h4>
+      <p>Planejamento mensal, produção e direcionamento da presença do João nos canais.</p>
+      <ul>
+        <li>12 postagens mensais</li>
+        <li>Reels, carrosséis e estáticos</li>
+        <li>Legendas estratégicas</li>
+        <li>Orientação para stories e bastidores</li>
+        <li>Linhas editoriais definidas e operadas</li>
+      </ul>
+    </div>
+    <div class="pillar">
+      <div class="roman">B.</div>
+      <h4>Captação de conteúdo</h4>
+      <p>Dois dias mensais de gravação. Direcionamento durante a captação para deixar o João natural diante da câmera.</p>
+      <ul>
+        <li>Vídeos curtos e bastidores</li>
+        <li>Reels educativos e de autoridade</li>
+        <li>Cortes para stories</li>
+        <li>Conteúdo em formato de entrevista</li>
+        <li>Fotos profissionais</li>
+      </ul>
+    </div>
+    <div class="pillar">
+      <div class="roman">C.</div>
+      <h4>Tráfego pago</h4>
+      <p>Mídia focada em posicionamento, engajamento e lembrança, não em volume de leads frios.</p>
+      <ul>
+        <li>Impulsionamento de reels de alto desempenho</li>
+        <li>Remarketing para base quente</li>
+        <li>Campanhas de lembrança</li>
+        <li>Segmentação por empresários e decisores</li>
+        <li>Crescimento qualificado de seguidores</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5. LINHAS EDITORIAIS ============ -->
+<section id="linhas" class="reveal">
+  <div class="eyebrow">05 · Linhas editoriais</div>
+  <h2>Cinco territórios <em class="fr" style="color: var(--accent);">de fala</em>.</h2>
+  <p class="lead">Cada peça produzida cabe em um destes cinco territórios. Garante consistência sem repetir fórmulas.</p>
+
+  <div class="cards">
+    <article class="card">
+      <div class="num">01</div>
+      <h4>João, o Life Planner</h4>
+      <p>O que faz um Life Planner. Por que seguro de vida não é só seguro. A diferença entre vender apólice e construir planejamento.</p>
+    </article>
+    <article class="card">
+      <div class="num">02</div>
+      <h4>Bastidores da rotina</h4>
+      <p>Estrada, reuniões, café com cliente, visitas em cidades próximas, encontros empresariais. O João em movimento.</p>
+    </article>
+    <article class="card">
+      <div class="num">03</div>
+      <h4>Quebra de objeções</h4>
+      <p>Seguro é só para quem tem família? Empresário precisa? Qual a diferença entre proteção, investimento e planejamento?</p>
+    </article>
+    <article class="card">
+      <div class="num">04</div>
+      <h4>Histórias reais</h4>
+      <p>Casos de famílias protegidas, situações em que o seguro gerou liquidez, empresários que precisavam proteger sociedade ou sucessão. Sempre com discrição.</p>
+    </article>
+    <article class="card" style="grid-column: 1 / -1;">
+      <div class="num">05</div>
+      <h4>Posicionamento pessoal</h4>
+      <p>Moto, estrada, família, network, valores, clientes que viraram amigos. O João como pessoa, a base de toda a confiança que sustenta a venda consultiva.</p>
+    </article>
+  </div>
+</section>
+
+<!-- ============ 6. PLANO 30 DIAS ============ -->
+<section id="plano" class="reveal">
+  <div class="eyebrow">06 · Plano de 30 dias</div>
+  <h2>Como a operação <em class="fr" style="color: var(--accent);">entra no ar</em>.</h2>
+  <p class="lead">O primeiro mês não é "começar a postar". É construir a fundação editorial, técnica e estratégica que sustenta todos os meses seguintes.</p>
+
+  <div class="timeline">
+    <div class="step">
+      <div class="week"><span class="roman">I.</span>Semana 1</div>
+      <div class="body">
+        <h4>Imersão e leitura.</h4>
+        <p>Sessão de imersão com o João para mapear histórico, base de clientes, parceiros estratégicos e relacionamentos-chave. Auditoria de toda a presença atual.</p>
+      </div>
+      <div class="deliv"><strong>Entregáveis</strong>
+        <ul><li>Mapa de relacionamento</li><li>Diagnóstico de presença atual</li><li>Territórios de fala identificados</li></ul>
+      </div>
+    </div>
+    <div class="step">
+      <div class="week"><span class="roman">II.</span>Semana 2</div>
+      <div class="body">
+        <h4>Plataforma editorial.</h4>
+        <p>Tom de voz definido, três pilares de conteúdo aprovados, calendário-modelo desenhado e arquitetura visual estabelecida. Validação conjunta antes de qualquer produção.</p>
+      </div>
+      <div class="deliv"><strong>Entregáveis</strong>
+        <ul><li>Plataforma editorial documentada</li><li>Guia de tom de voz</li><li>Calendário-modelo do mês</li></ul>
+      </div>
+    </div>
+    <div class="step">
+      <div class="week"><span class="roman">III.</span>Semana 3</div>
+      <div class="body">
+        <h4>Captação piloto e setup.</h4>
+        <p>Primeiro dia de captação no formato definido. Identidade visual ajustada, perfis otimizados e fluxos de distribuição estruturados. Validação peça a peça.</p>
+      </div>
+      <div class="deliv"><strong>Entregáveis</strong>
+        <ul><li>Primeiras peças aprovadas</li><li>Identidade visual no padrão</li><li>Setup técnico dos canais</li></ul>
+      </div>
+    </div>
+    <div class="step">
+      <div class="week"><span class="roman">IV.</span>Semana 4</div>
+      <div class="body">
+        <h4>Go-live e ritmo estabelecido.</h4>
+        <p>Operação no ar. Ritmo semanal rodando. Tráfego pago ativo nas campanhas de lembrança. Primeira leitura honesta do que está ressoando.</p>
+      </div>
+      <div class="deliv"><strong>Entregáveis</strong>
+        <ul><li>Operação rodando no ritmo</li><li>Tráfego ativo</li><li>Primeiro retrato qualitativo</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 7. INVESTIMENTO ============ -->
+<section id="investimento" class="reveal">
+  <div class="eyebrow">07 · Investimento</div>
+  <h2>Plano completo mensal.</h2>
+  <p class="lead">Operação contínua, com squad dedicado. O retorno é cumulativo, cada mês reforça o anterior.</p>
+
+  <div class="price">
+    <div class="col">
+      <div class="lbl">Composição do plano</div>
+      <ul>
+        <li><span>Social Media</span><span class="v">R$ 1.000,00</span></li>
+        <li><span>Tráfego pago</span><span class="v">R$ 1.000,00</span></li>
+        <li><span>Captação · 2 dias / mês</span><span class="v">R$ 1.000,00</span></li>
+      </ul>
+      <div class="total"><span class="strike">Subtotal R$ 3.000,00</span></div>
+      <p class="note">Compromisso sugerido: 6 meses, com revisão a cada ciclo. Tempo necessário para que a presença crie lastro de reputação e lembrança.</p>
+    </div>
+    <div class="col">
+      <div class="lbl">Condição especial · 10% off</div>
+      <div class="big">R$ 2.700<span class="small">/mês</span></div>
+      <p class="note" style="margin-top: 6px;">Valor com desconto aplicado para fechamento ainda neste ciclo. Forma de pagamento alinhada na contratação.</p>
+      <p class="note" style="border-top: 1px solid var(--border); padding-top: 16px; margin-top: 20px;"><strong style="color: var(--fg-2);">Observação:</strong> o valor de mídia paga para impulsionamento dos anúncios não está incluso no fee mensal — é debitado diretamente pelas plataformas, conforme orçamento que você definir.</p>
+    </div>
+  </div>
+
+  <div class="next">
+    <div>
+      <div class="label">Próximo passo</div>
+      <div class="text">Conversa de 45 minutos para alinhar escopo final, datas de captação e cronograma. Sem compromisso.</div>
+    </div>
+    <a class="cta" href="mailto:contato@citaramarketing.com.br?subject=Proposta%20Jo%C3%A3o%20Prudential%20%C2%B7%20Avan%C3%A7ar">
+      Agendar conversa
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="doc-footer">
+  <div>Cítara Marketing · Proposta confidencial · 2026</div>
+  <img src="assets/logo-horizontal-branco.png" alt="Cítara">
+  <div>Comunicação que ressoa, performance que se prova.</div>
+</footer>
+
+<script>
+  // Reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.08, rootMargin: '0px 0px -5% 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  // Safety net
+  setTimeout(() => document.querySelectorAll('.reveal').forEach(el => el.classList.add('in')), 1500);
+
+  // Active link in topnav (subtle)
+  const links = [...document.querySelectorAll('.topnav .links a')];
+  const sections = links.map(a => document.querySelector(a.getAttribute('href')));
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY + 120;
+    let current = sections[0];
+    sections.forEach(s => { if (s && s.offsetTop <= y) current = s; });
+    links.forEach(a => a.style.color = '');
+    if (current) {
+      const active = links.find(a => a.getAttribute('href') === '#' + current.id);
+      if (active) active.style.color = '#FFFFFF';
+    }
+  }, { passive: true });
+</script>
+
+</body>
+</html>

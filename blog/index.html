@@ -1,0 +1,600 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Frequência · Blog Cítara</title>
+<link rel="stylesheet" href="../ds/colors_and_type.css">
+<link rel="stylesheet" href="../ds/tokens.css">
+<link rel="stylesheet" href="../site.css">
+<link rel="stylesheet" href="../brand.css">
+<link rel="stylesheet" href="blog.css">
+</head>
+<body class="freq" data-theme="dark">
+
+<!-- ============ TOPBAR ============ -->
+<div class="topbar-wrap">
+  <div class="container">
+    <header class="topbar">
+      <a class="brand" href="../Citara Landing.html" aria-label="Cítara, início">
+        <img src="../assets/logo-horizontal-branco.png" alt="Cítara" style="height: 32px; width: auto; display: block;">
+      </a>
+      <nav class="nav-links">
+        <a href="../sobre.html">Sobre</a>
+        <a href="../Citara Landing.html#servicos">Serviços</a>
+        <a href="../portfolio.html">Portfólio</a>
+        <a href="index.html" class="active">Frequência</a>
+        <a href="../Citara Landing.html#contato">Contato</a>
+      </nav>
+      <div class="topbar-cta">
+        <a class="btn btn-primary" href="../Citara Landing.html#contato">Falar com o time</a>
+      </div>
+    </header>
+  </div>
+</div>
+
+<!-- ============ HEAD ============ -->
+<section class="freq-head" data-screen-label="01 Hero Frequência">
+  <div class="grid-bg"></div>
+  <div class="wash"></div>
+  <div class="container freq-head-inner">
+    <div class="freq-titlerow">
+      <div>
+        <div class="freq-eyebrow">
+          <span class="live">transmitindo</span>
+          <span>· N° 042 · Edição abril/2026</span>
+        </div>
+        <h1 class="freq-title">
+          <span class="em">Frequência</span><br>
+          <span class="stroke">Cítara.</span>
+        </h1>
+        <p class="freq-sub">
+          O que está em rotação no nosso war room. Performance, IA aplicada,
+          branding, CRM e cases — sem fluff, com método.
+        </p>
+      </div>
+      <div class="freq-meta-cluster">
+        <div class="row"><span>Edições · <b>042</b></span><span>Autores · <b>11</b></span></div>
+        <div class="row"><span>Posts · <b>184</b></span><span>Inscritos · <b>3 412</b></span></div>
+        <div class="row"><span>Última pub · <b>há 2h</b></span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- waveform timeline -->
+  <div class="freq-waveform" id="waveform">
+    <svg viewBox="0 0 1200 96" preserveAspectRatio="none" aria-hidden="true">
+      <g id="wave-bars"></g>
+    </svg>
+    <div class="cursor" id="wave-cursor" style="left: 78%;"></div>
+    <div class="freq-tick" style="left: 8%;">JAN 26</div>
+    <div class="freq-tick" style="left: 28%;">FEV 26</div>
+    <div class="freq-tick" style="left: 50%;">MAR 26</div>
+    <div class="freq-tick" style="left: 78%;">ABR 26 · agora</div>
+  </div>
+</section>
+
+<!-- ============ FILTER BAR ============ -->
+<div class="freq-filterbar">
+  <div class="container freq-filterbar-inner">
+    <div class="freq-cat-chips" id="chips">
+      <button class="freq-chip on" data-cat="all"><span class="dot"></span>Todos<span class="count">12</span></button>
+      <button class="freq-chip" data-cat="performance"><span class="dot" style="background:#E5348B"></span>Performance<span class="count">04</span></button>
+      <button class="freq-chip" data-cat="ia"><span class="dot" style="background:#4ADE80"></span>I.A.<span class="count">03</span></button>
+      <button class="freq-chip" data-cat="branding"><span class="dot" style="background:#F59E0B"></span>Branding<span class="count">02</span></button>
+      <button class="freq-chip" data-cat="crm"><span class="dot" style="background:#60A5FA"></span>CRM<span class="count">02</span></button>
+      <button class="freq-chip" data-cat="cases"><span class="dot" style="background:#C084FC"></span>Cases<span class="count">01</span></button>
+    </div>
+    <button class="freq-search-trigger" id="open-cmd">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      Buscar artigos, autores, tags…
+      <span class="kbd">⌘ K</span>
+    </button>
+    <div class="freq-sort">
+      <span>ordem</span>
+      <div class="seg" id="sort">
+        <button class="on" data-s="new">recente</button>
+        <button data-s="hot">popular</button>
+        <button data-s="long">denso</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ FEATURED ============ -->
+<section class="container">
+  <div class="freq-featured">
+    <a class="freq-feat-card" href="post.html">
+      <div class="cover">
+        <svg class="wave" viewBox="0 0 600 280" preserveAspectRatio="none" aria-hidden="true">
+          <defs>
+            <linearGradient id="lg1" x1="0" x2="1" y1="0" y2="0">
+              <stop offset="0" stop-color="#E5348B" stop-opacity="0.85"/>
+              <stop offset="1" stop-color="#FF4A9C" stop-opacity="0.4"/>
+            </linearGradient>
+          </defs>
+          <path d="M0 160 Q 75 80 150 140 T 300 130 T 450 110 T 600 90 L 600 280 L 0 280 Z" fill="url(#lg1)" opacity="0.4"/>
+          <path d="M0 160 Q 75 80 150 140 T 300 130 T 450 110 T 600 90" fill="none" stroke="#FFFFFF" stroke-opacity="0.6" stroke-width="1.5"/>
+          <path d="M0 200 Q 75 140 150 180 T 300 170 T 450 150 T 600 130" fill="none" stroke="#FFFFFF" stroke-opacity="0.25" stroke-width="1"/>
+          <circle cx="450" cy="110" r="5" fill="#FFFFFF"/>
+          <circle cx="450" cy="110" r="14" fill="none" stroke="#FFFFFF" stroke-opacity="0.4"/>
+        </svg>
+        <div class="badge"><span style="width:6px;height:6px;border-radius:50%;background:#E5348B;display:inline-block;"></span> Em destaque · capa</div>
+      </div>
+      <div class="body">
+        <div class="meta-row">
+          <span>Performance</span>
+          <span>·</span>
+          <span>21 abr 2026</span>
+          <span>·</span>
+          <span>14 min de leitura</span>
+        </div>
+        <h2>O fim do CAC chutado: como a Cítara monta projeção de pipeline em 30 dias.</h2>
+        <p>Da auditoria do GA4 server-side ao modelo de cohort em BigQuery — um passo-a-passo de como saímos do "investimos R$ X" para um modelo que prevê faturamento por canal com erro &lt; 12%.</p>
+        <div class="author">
+          <div class="avatar">RC</div>
+          <div class="who"><b>Rodrigo Campos</b> · Head de Performance</div>
+        </div>
+      </div>
+    </a>
+
+    <div class="freq-secondary">
+      <a class="freq-mini" href="post.html">
+        <div class="thumb"><div class="glyph">𝓲</div></div>
+        <div>
+          <h4>Cítara A.I., a primeira agente de mídia que faz auditoria sozinha.</h4>
+          <div class="mini-meta"><span>I.A.</span><span>· 8 min</span><span>· há 4 dias</span></div>
+        </div>
+      </a>
+      <a class="freq-mini" href="post.html">
+        <div class="thumb"><div class="glyph">B</div></div>
+        <div>
+          <h4>Por que abandonamos o Inter e o Roboto. Reposicionamento de marca em 2026.</h4>
+          <div class="mini-meta"><span>Branding</span><span>· 11 min</span><span>· há 1 sem</span></div>
+        </div>
+      </a>
+      <a class="freq-mini" href="post.html">
+        <div class="thumb"><div class="glyph">⌘</div></div>
+        <div>
+          <h4>Kommo + n8n + Chatwoot: o stack que economiza 28h/semana do comercial.</h4>
+          <div class="mini-meta"><span>CRM</span><span>· 9 min</span><span>· há 2 sem</span></div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GRID ============ -->
+<section class="container freq-grid-section" id="grid-section">
+  <div class="freq-grid-head">
+    <h3>Ondas recentes.</h3>
+    <div class="meta">12 publicações · ordem cronológica</div>
+  </div>
+
+  <div class="freq-grid" id="grid">
+
+    <a class="freq-card span-8" data-cat="performance" data-tags="meta-ads,server-side,unit-economics" data-date="2026-04-21" data-len="14" data-pop="98" href="post.html">
+      <div class="arrow-out"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></div>
+      <div class="stamp"><div class="cat"><span class="dot"></span> Performance</div><span>21.04.26 · 14min</span></div>
+      <h3>O fim do CAC chutado: projeção de pipeline com erro &lt;12%.</h3>
+      <p>Como saímos do "investimos R$ X" para um modelo de cohort em BigQuery que prevê faturamento por canal — em 30 dias.</p>
+      <div class="viz-wave" aria-hidden="true">
+        <div class="bar" style="height: 30%"></div><div class="bar" style="height: 50%"></div><div class="bar" style="height: 35%"></div><div class="bar" style="height: 70%"></div><div class="bar" style="height: 55%"></div><div class="bar" style="height: 80%"></div><div class="bar" style="height: 45%"></div><div class="bar" style="height: 90%"></div><div class="bar" style="height: 65%"></div><div class="bar" style="height: 100%"></div><div class="bar" style="height: 75%"></div><div class="bar" style="height: 85%"></div><div class="bar" style="height: 92%"></div><div class="bar" style="height: 78%"></div><div class="bar" style="height: 88%"></div><div class="bar" style="height: 70%"></div><div class="bar" style="height: 95%"></div><div class="bar" style="height: 60%"></div>
+      </div>
+      <div class="footer">
+        <div class="author-mini"><span class="av">RC</span> Rodrigo Campos</div>
+        <span class="read">ler agora →</span>
+      </div>
+    </a>
+
+    <a class="freq-card span-4" data-cat="ia" data-tags="agentes,automacao,ai-ops" data-date="2026-04-17" data-len="8" data-pop="91" href="post.html">
+      <div class="arrow-out"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></div>
+      <div class="stamp"><div class="cat"><span class="dot"></span> I.A.</div><span>17.04 · 8min</span></div>
+      <h3>Cítara A.I.: a primeira agente que faz auditoria sozinha.</h3>
+      <p>Lemos 11 contas em uma noite, identificamos 38 vazamentos. O agente roda em loop — sem escalar humano.</p>
+      <div class="footer">
+        <div class="author-mini"><span class="av">MA</span> Marina Alves</div>
+        <span class="read">ler →</span>
+      </div>
+    </a>
+
+    <a class="freq-card span-4" data-cat="branding" data-tags="rebrand,tipografia,sistema" data-date="2026-04-14" data-len="11" data-pop="76" href="post.html">
+      <div class="arrow-out"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></div>
+      <div class="stamp"><div class="cat"><span class="dot"></span> Branding</div><span>14.04 · 11min</span></div>
+      <h3>Por que abandonamos o Inter. Tipografia em 2026.</h3>
+      <p>Saturação visual mata diferenciação. Migramos 7 marcas do grupo para pares menos óbvios — e o que mudou.</p>
+      <div class="footer">
+        <div class="author-mini"><span class="av">PL</span> Paula Lima</div>
+        <span class="read">ler →</span>
+      </div>
+    </a>
+
+    <a class="freq-card span-4" data-cat="crm" data-tags="kommo,n8n,whatsapp" data-date="2026-04-10" data-len="9" data-pop="82" href="post.html">
+      <div class="arrow-out"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></div>
+      <div class="stamp"><div class="cat"><span class="dot"></span> CRM</div><span>10.04 · 9min</span></div>
+      <h3>Kommo + n8n + Chatwoot: 28h/sem economizadas.</h3>
+      <p>O stack de automação que devolveu uma sexta-feira inteira para o comercial — fluxos prontos para copiar.</p>
+      <div class="footer">
+        <div class="author-mini"><span class="av">DT</span> Diego Trindade</div>
+        <span class="read">ler →</span>
+      </div>
+    </a>
+
+    <a class="freq-card span-6" data-cat="cases" data-tags="moda,e-commerce,roas" data-date="2026-04-05" data-len="13" data-pop="88" href="post.html">
+      <div class="arrow-out"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></div>
+      <div class="stamp"><div class="cat"><span class="dot"></span> Cases</div><span>05.04 · 13min</span></div>
+      <h3>Sergi Romero: 3,2× faturamento em 6 meses.</h3>
+      <p>O que parecia uma loja de moda virou operação data-driven. ROAS de 5,4×, CAC -41%, base de clientes recorrentes 2,1×.</p>
+      <div class="inline-metric">
+        <span class="val">3,2</span><span class="unit">× faturamento</span>
+      </div>
+      <div class="footer">
+        <div class="author-mini"><span class="av">RC</span> Rodrigo Campos</div>
+        <span class="read">ler case completo →</span>
+      </div>
+    </a>
+
+    <a class="freq-card span-6" data-cat="performance" data-tags="meta-ads,creative-testing" data-date="2026-04-02" data-len="10" data-pop="74" href="post.html">
+      <div class="arrow-out"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></div>
+      <div class="stamp"><div class="cat"><span class="dot"></span> Performance</div><span>02.04 · 10min</span></div>
+      <h3>Criativos em ciclo de 7 dias: o ritmo que escala Meta Ads.</h3>
+      <p>Cadência de testes que mantém CPA 23% abaixo do benchmark — sem queimar a conta nem o time criativo.</p>
+      <div class="footer">
+        <div class="author-mini"><span class="av">JF</span> Júlia Ferraz</div>
+        <span class="read">ler →</span>
+      </div>
+    </a>
+
+    <a class="freq-card span-4" data-cat="ia" data-tags="prompts,workflow,creative" data-date="2026-03-28" data-len="6" data-pop="69" href="post.html">
+      <div class="arrow-out"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></div>
+      <div class="stamp"><div class="cat"><span class="dot"></span> I.A.</div><span>28.03 · 6min</span></div>
+      <h3>Prompts que viraram briefings: como nosso copywriter usa LLM.</h3>
+      <p>3 frameworks de prompt para gerar 40 variações de anúncio sem soar robótico — e como filtrar.</p>
+      <div class="footer">
+        <div class="author-mini"><span class="av">MA</span> Marina Alves</div>
+        <span class="read">ler →</span>
+      </div>
+    </a>
+
+    <a class="freq-card span-4" data-cat="performance" data-tags="ga4,server-side,gtm" data-date="2026-03-25" data-len="12" data-pop="71" href="post.html">
+      <div class="arrow-out"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></div>
+      <div class="stamp"><div class="cat"><span class="dot"></span> Performance</div><span>25.03 · 12min</span></div>
+      <h3>GA4 server-side em 90 minutos: stack mínimo viável.</h3>
+      <p>Cloud Run + GTM server. Conversões fechando &gt;94% com a fonte de dados real do CRM.</p>
+      <div class="footer">
+        <div class="author-mini"><span class="av">LP</span> Lucas Pinto</div>
+        <span class="read">ler →</span>
+      </div>
+    </a>
+
+    <a class="freq-card span-4" data-cat="branding" data-tags="naming,positioning" data-date="2026-03-20" data-len="9" data-pop="65" href="post.html">
+      <div class="arrow-out"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></div>
+      <div class="stamp"><div class="cat"><span class="dot"></span> Branding</div><span>20.03 · 9min</span></div>
+      <h3>Naming não é poesia. É arquitetura de busca.</h3>
+      <p>4 nomes que matamos no nosso processo — e os 3 critérios técnicos que sobreviveram ao C-level.</p>
+      <div class="footer">
+        <div class="author-mini"><span class="av">PL</span> Paula Lima</div>
+        <span class="read">ler →</span>
+      </div>
+    </a>
+
+    <a class="freq-card span-12" data-cat="ia" data-tags="ia,futuro,opiniao" data-date="2026-03-15" data-len="18" data-pop="95" href="post.html">
+      <div class="arrow-out"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></div>
+      <div class="stamp"><div class="cat"><span class="dot"></span> I.A. · Manifesto</div><span>15.03 · 18min · ensaio longo</span></div>
+      <h3>A agência de mídia em 2027 tem 6 humanos, 4 agentes e 1 propósito.</h3>
+      <p>Por onde a IA não pode passar — e onde ela já está performando melhor que o estagiário sênior. Um manifesto da Cítara sobre como a operação muda nos próximos 18 meses, sem hype e sem vender curso.</p>
+      <div class="footer">
+        <div class="author-mini"><span class="av">FC</span> Felipe Cíntora · CEO</div>
+        <span class="read">ler ensaio completo →</span>
+      </div>
+    </a>
+
+    <a class="freq-card span-6" data-cat="crm" data-tags="ltv,cohort,retencao" data-date="2026-03-10" data-len="11" data-pop="58" href="post.html">
+      <div class="arrow-out"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></div>
+      <div class="stamp"><div class="cat"><span class="dot"></span> CRM</div><span>10.03 · 11min</span></div>
+      <h3>LTV não é métrica, é decisão de orçamento.</h3>
+      <p>Como modelar cohort retention com 6 meses de histórico — e usar isso para liberar budget de mídia sem brigar.</p>
+      <div class="footer">
+        <div class="author-mini"><span class="av">DT</span> Diego Trindade</div>
+        <span class="read">ler →</span>
+      </div>
+    </a>
+
+    <a class="freq-card span-6" data-cat="performance" data-tags="linkedin,b2b,saas" data-date="2026-03-05" data-len="9" data-pop="61" href="post.html">
+      <div class="arrow-out"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></div>
+      <div class="stamp"><div class="cat"><span class="dot"></span> Performance</div><span>05.03 · 9min</span></div>
+      <h3>LinkedIn Ads para B2B: o ABM que não custa fortuna.</h3>
+      <p>Segmentação por conta, conteúdo enxuto, follow-up via SDR. CPL caiu 47% em uma carteira SaaS.</p>
+      <div class="footer">
+        <div class="author-mini"><span class="av">JF</span> Júlia Ferraz</div>
+        <span class="read">ler →</span>
+      </div>
+    </a>
+
+    <div class="freq-empty" id="empty">
+      <h4>Nenhuma frequência aqui ainda.</h4>
+      <p>Tente outra categoria ou outra ordem.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ NEWSLETTER ============ -->
+<section class="container">
+  <div class="freq-strip">
+    <div class="wash"></div>
+    <div class="freq-strip-l">
+      <div class="ey">Newsletter · Cítara Frequência</div>
+      <h3>Receba o que está em rotação no nosso war room. Toda quinta, 7h.</h3>
+      <p>Um e-mail, três frequências, zero curso. Direto do time que opera as contas — para CMOs e founders que decidem orçamento.</p>
+    </div>
+    <div class="freq-strip-r">
+      <div class="freq-input">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" style="color:rgba(255,255,255,0.4)"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
+        <input type="email" placeholder="seu@email.com.br">
+      </div>
+      <button class="btn-sub">
+        Inscrever na frequência
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </button>
+      <div class="note">Sem spam · cancele com 1 clique</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <a class="brand" href="../Citara Landing.html"><img src="../assets/logo-vertical-branco.png" alt="Cítara" style="height:96px;width:auto;display:block;"></a>
+        <div class="footer-tag">Comunicação que ressoa.</div>
+      </div>
+      <div>
+        <h5>Frequência</h5>
+        <ul>
+          <li><a href="index.html">Todos os posts</a></li>
+          <li><a href="#">Performance</a></li>
+          <li><a href="#">I.A.</a></li>
+          <li><a href="#">Branding</a></li>
+          <li><a href="#">CRM</a></li>
+          <li><a href="#">Cases</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Cítara</h5>
+        <ul>
+          <li><a href="../Citara Landing.html">Home</a></li>
+          <li><a href="../sobre.html">Sobre</a></li>
+          <li><a href="../portfolio.html">Portfólio</a></li>
+          <li><a href="../Citara Landing.html#contato">Contato</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Contato</h5>
+        <ul>
+          <li>Av. Maria de Jesus Condeixa, 600<br>Sala 234, Ribeirão Preto, SP</li>
+          <li><a href="mailto:contato@citaramarketing.com.br">contato@citaramarketing.com.br</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 Cítara Marketing</div>
+      <div>Frequência · Edição N° 042</div>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ COMMAND PALETTE ============ -->
+<div class="freq-cmd-overlay" id="cmd">
+  <div class="freq-cmd" role="dialog" aria-label="Buscar">
+    <div class="freq-cmd-input">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      <input id="cmd-input" type="text" placeholder="Buscar artigos, autores, tags…" autocomplete="off">
+      <span class="esc">ESC</span>
+    </div>
+    <div class="freq-cmd-list" id="cmd-list"></div>
+  </div>
+</div>
+
+<!-- ============ TWEAKS ============ -->
+<div class="freq-tweaks" id="tweaks">
+  <h5>Tweaks <span class="x" id="tweaks-x">×</span></h5>
+  <div class="group">
+    <label>Tema</label>
+    <div class="seg" data-k="theme">
+      <button data-v="dark" class="on">Escuro</button>
+      <button data-v="light">Claro</button>
+    </div>
+  </div>
+  <div class="group">
+    <label>Densidade do grid</label>
+    <div class="seg" data-k="density">
+      <button data-v="editorial" class="on">Editorial</button>
+      <button data-v="uniform">Uniforme</button>
+    </div>
+  </div>
+  <div class="group">
+    <label>Estilo de capa</label>
+    <div class="seg" data-k="cover">
+      <button data-v="wave" class="on">Onda</button>
+      <button data-v="glyph">Glyph</button>
+      <button data-v="off">Limpo</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "theme": "dark",
+  "density": "editorial",
+  "cover": "wave"
+}/*EDITMODE-END*/;
+let state = { ...TWEAK_DEFAULTS };
+try { state = { ...state, ...JSON.parse(localStorage.getItem('freq-tweaks')||'{}') }; } catch {}
+
+function applyState(){
+  document.documentElement.dataset.theme = state.theme;
+  document.body.dataset.theme = state.theme;
+  // density
+  if (state.density === 'uniform') {
+    document.querySelectorAll('.freq-card').forEach(c => { c.dataset._cls = c.className; c.className = 'freq-card span-4'; });
+  } else {
+    document.querySelectorAll('.freq-card').forEach(c => { if (c.dataset._cls) c.className = c.dataset._cls; });
+  }
+  // cover style
+  document.body.dataset.cover = state.cover;
+  document.querySelectorAll('.freq-tweaks .seg').forEach(seg => {
+    const k = seg.dataset.k;
+    seg.querySelectorAll('button').forEach(b => b.classList.toggle('on', b.dataset.v === state[k]));
+  });
+}
+function saveState(){ localStorage.setItem('freq-tweaks', JSON.stringify(state)); }
+applyState();
+
+document.querySelectorAll('.freq-tweaks .seg button').forEach(b => {
+  b.addEventListener('click', () => {
+    const k = b.parentElement.dataset.k;
+    state[k] = b.dataset.v;
+    applyState(); saveState();
+    try { window.parent.postMessage({type:'__edit_mode_set_keys', edits: { [k]: b.dataset.v }}, '*'); } catch {}
+  });
+});
+
+// tweaks panel host protocol
+window.addEventListener('message', e => {
+  if (!e.data) return;
+  if (e.data.type === '__activate_edit_mode') document.getElementById('tweaks').classList.add('on');
+  if (e.data.type === '__deactivate_edit_mode') document.getElementById('tweaks').classList.remove('on');
+});
+document.getElementById('tweaks-x').addEventListener('click', () => {
+  document.getElementById('tweaks').classList.remove('on');
+  try { window.parent.postMessage({type:'__edit_mode_dismissed'}, '*'); } catch {}
+});
+try { window.parent.postMessage({type:'__edit_mode_available'}, '*'); } catch {}
+
+// ============ Waveform bars ============
+const wbars = document.getElementById('wave-bars');
+if (wbars) {
+  const N = 120;
+  for (let i=0; i<N; i++) {
+    const x = (i / N) * 1200;
+    // a fake signal that grows over time + noise
+    const trend = Math.pow(i / N, 0.7);
+    const noise = Math.sin(i * 0.6) * 0.2 + Math.cos(i * 0.21) * 0.3;
+    const h = Math.max(6, (trend * 60) + noise * 18 + 12);
+    const isHot = i / N > 0.78;
+    const color = isHot ? '#E5348B' : 'rgba(255,255,255,0.18)';
+    const rect = document.createElementNS('http://www.w3.org/2000/svg','rect');
+    rect.setAttribute('x', x.toFixed(1));
+    rect.setAttribute('y', (96 - h).toFixed(1));
+    rect.setAttribute('width', (1200/N - 2).toFixed(1));
+    rect.setAttribute('height', h.toFixed(1));
+    rect.setAttribute('fill', color);
+    rect.setAttribute('rx', '1');
+    wbars.appendChild(rect);
+  }
+}
+
+// ============ Filter chips ============
+const chips = document.getElementById('chips');
+const empty = document.getElementById('empty');
+let activeCat = 'all';
+let activeSort = 'new';
+function applyFilter(){
+  const cards = [...document.querySelectorAll('.freq-card')];
+  cards.forEach(c => {
+    const hit = activeCat === 'all' || c.dataset.cat === activeCat;
+    c.style.display = hit ? '' : 'none';
+  });
+  const visible = cards.filter(c => c.style.display !== 'none');
+  empty.classList.toggle('on', visible.length === 0);
+
+  // sort
+  const grid = document.getElementById('grid');
+  visible.sort((a,b) => {
+    if (activeSort === 'new') return b.dataset.date.localeCompare(a.dataset.date);
+    if (activeSort === 'hot') return parseInt(b.dataset.pop) - parseInt(a.dataset.pop);
+    if (activeSort === 'long') return parseInt(b.dataset.len) - parseInt(a.dataset.len);
+    return 0;
+  });
+  visible.forEach(c => grid.appendChild(c));
+  grid.appendChild(empty);
+}
+chips.addEventListener('click', e => {
+  const btn = e.target.closest('.freq-chip');
+  if (!btn) return;
+  chips.querySelectorAll('.freq-chip').forEach(c => c.classList.remove('on'));
+  btn.classList.add('on');
+  activeCat = btn.dataset.cat;
+  applyFilter();
+});
+const sortSeg = document.getElementById('sort');
+sortSeg.addEventListener('click', e => {
+  const btn = e.target.closest('button');
+  if (!btn) return;
+  sortSeg.querySelectorAll('button').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  activeSort = btn.dataset.s;
+  applyFilter();
+});
+
+// ============ Command palette ============
+const cmd = document.getElementById('cmd');
+const cmdInput = document.getElementById('cmd-input');
+const cmdList = document.getElementById('cmd-list');
+const allCards = [...document.querySelectorAll('.freq-card')].map(c => ({
+  el: c,
+  title: c.querySelector('h3').textContent,
+  cat: c.dataset.cat,
+  tags: c.dataset.tags || '',
+  href: c.getAttribute('href')
+}));
+function renderCmd(q){
+  q = (q || '').toLowerCase().trim();
+  const hits = q ? allCards.filter(c =>
+    c.title.toLowerCase().includes(q) ||
+    c.cat.toLowerCase().includes(q) ||
+    c.tags.toLowerCase().includes(q)
+  ) : allCards.slice(0, 6);
+
+  let html = '<div class="freq-cmd-section-label">' + (q ? 'Resultados' : 'Sugestões da redação') + '</div>';
+  hits.forEach((h, i) => {
+    html += `<a class="freq-cmd-item ${i===0?'active':''}" href="${h.href}">
+      <span class="icon">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+      </span>
+      <span class="info"><span class="title">${h.title}</span><span class="sub">${h.cat}</span></span>
+      <span class="badge">↵ abrir</span>
+    </a>`;
+  });
+  if (hits.length === 0) html += '<div class="freq-cmd-section-label" style="padding:24px 20px;">Sem resultados para "'+q+'"</div>';
+  cmdList.innerHTML = html;
+}
+function openCmd(){
+  cmd.classList.add('open');
+  setTimeout(() => cmdInput.focus(), 50);
+  renderCmd('');
+}
+function closeCmd(){ cmd.classList.remove('open'); cmdInput.value=''; }
+document.getElementById('open-cmd').addEventListener('click', openCmd);
+cmd.addEventListener('click', e => { if (e.target === cmd) closeCmd(); });
+cmdInput.addEventListener('input', e => renderCmd(e.target.value));
+window.addEventListener('keydown', e => {
+  if ((e.key === 'k' || e.key === 'K') && (e.metaKey || e.ctrlKey)) { e.preventDefault(); openCmd(); }
+  if (e.key === 'Escape') closeCmd();
+});
+
+// ============ Waveform cursor follows scroll ============
+const cursor = document.getElementById('wave-cursor');
+window.addEventListener('scroll', () => {
+  const max = document.documentElement.scrollHeight - window.innerHeight;
+  const p = Math.min(1, Math.max(0, window.scrollY / max));
+  // cursor maps from 78% (now) to 99% (deep history)
+  const x = 78 + p * 18;
+  cursor.style.left = x + '%';
+}, { passive: true });
+</script>
+
+</body>
+</html>

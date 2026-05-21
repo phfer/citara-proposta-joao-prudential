@@ -1,0 +1,249 @@
+/* =========================================================
+   Cítara brand override, paleta real do site
+   Black + Magenta (#E5348B primary, #CC3366 secondary)
+   Tipografia: Poppins (heading) + Montserrat (body)
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* Override accent scale to brand magenta */
+  --gold-50:  #FDE8F2;
+  --gold-100: #FBCCE1;
+  --gold-200: #F699BF;
+  --gold-300: #E5348B;  /* primary accent, brand magenta */
+  --gold-400: #D42079;
+  --gold-500: #CC3366;  /* secondary / hover */
+  --gold-600: #9E1F4A;
+
+  /* Override graphite to true black brand */
+  --graphite-950: #000000;
+  --graphite-900: #010012;  /* brand primary, near-black with blue tint */
+  --graphite-800: #0A0A1F;
+  --graphite-700: #15132B;
+  --graphite-600: #20203A;
+
+  /* Type families */
+  --font-serif: 'Poppins', system-ui, sans-serif;
+  --font-sans:  'Montserrat', system-ui, sans-serif;
+
+  /* Semantic overrides */
+  --accent:        var(--gold-300);
+  --accent-hover:  var(--gold-500);
+  --accent-wash:   var(--gold-100);
+  --accent-soft:   var(--gold-50);
+  --accent-fg:     #FFFFFF;
+
+  --focus-ring: rgba(229, 52, 139, 0.5);
+}
+
+/* Brand intensity variants, override the original "gold" tweak */
+[data-gold="subtle"]  { --gold-300: #D1458F; --gold-500: #B92E6C; --gold-100: #F2D1E2; }
+[data-gold="default"] { --gold-300: #E5348B; --gold-500: #CC3366; --gold-100: #FBCCE1; }
+[data-gold="bold"]    { --gold-300: #FF1E84; --gold-500: #E5348B; --gold-100: #FFC4DD; }
+
+/* Light theme using paper + ink, with magenta accent */
+:root[data-theme="light"] {
+  --bg-page:    #FAFAF7;
+  --bg-surface: #FFFFFF;
+  --bg-raised:  #FFFFFF;
+  --bg-sunken:  #F2F0EB;
+}
+
+/* Dark theme, brand primary */
+[data-theme="dark"] {
+  --bg-page:    #010012;
+  --bg-surface: #0A0A1F;
+  --bg-raised:  #15132B;
+  --bg-sunken:  #000000;
+  --fg-1: #FFFFFF;
+  --fg-2: #C8C6D4;
+  --fg-3: #8A879A;
+  --fg-4: #5A576A;
+  --border-1: rgba(255,255,255,0.08);
+  --border-subtle: rgba(255,255,255,0.05);
+  --border-strong: rgba(255,255,255,0.18);
+}
+
+/* Dark theme, marquee and testimonial bg */
+[data-theme="dark"] .marquee { background: #000000; }
+[data-theme="dark"] .hero .wash { opacity: 0.4; background: radial-gradient(closest-side, rgba(229,52,139,0.4), transparent 70%); }
+[data-theme="dark"] .hero-eyebrow { background: rgba(255,255,255,0.03); }
+[data-theme="dark"] .service-card { background: #0A0A1F; }
+[data-theme="dark"] .service-card.hero-card { background: linear-gradient(160deg, #15132B 0%, #010012 60%); border-color: rgba(229,52,139,0.18); }
+[data-theme="dark"] .pillars { background: #0A0A1F; }
+[data-theme="dark"] .pillar:hover { background: #15132B; }
+[data-theme="dark"] .case-card { background: #0A0A1F; }
+[data-theme="dark"] .testi { background: #0A0A1F; }
+[data-theme="dark"] .eco-item { background: #0A0A1F; }
+[data-theme="dark"] .hero-ticker { background: #0A0A1F; }
+[data-theme="dark"] .ticker-cell.feat { background: linear-gradient(180deg, rgba(229,52,139,0.12), transparent); }
+[data-theme="dark"] .tweaks-panel { background: #15132B; }
+[data-theme="dark"] .tweaks-panel .seg { background: #010012; }
+[data-theme="dark"] .tweaks-panel .seg button.on { background: #15132B; }
+[data-theme="dark"] .cta-final { background: #000000; border-color: rgba(229,52,139,0.15); }
+[data-theme="dark"] .cta-final .wash { background: radial-gradient(closest-side, rgba(229,52,139,0.45), transparent 70%); }
+[data-theme="dark"] .btn-ghost { color: #FFFFFF; border-color: rgba(255,255,255,0.18); }
+[data-theme="dark"] .avatar { background: #15132B; color: #FFFFFF; }
+[data-theme="dark"] .btn-primary { color: #FFFFFF; }
+
+.hero-title .em {
+  color: var(--gold-300) !important;
+  font-style: normal;
+  font-weight: 600;
+}
+.hero-title .stroke {
+  -webkit-text-stroke: 1.5px var(--fg-1);
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* Serif display utility classes, remap to Poppins heavy */
+.display-xl, .display-lg, .display-md, .display-sm,
+h1.serif, h2.serif, h3.serif,
+.section-head .title h2,
+.pillar h3, .service-card h3, .case-card .client .name, .case-card .metric-big .val,
+.hero-title, .cta-final h2, .testi .text {
+  font-family: var(--font-serif);
+  letter-spacing: -0.02em;
+}
+
+/* Buttons with brand magenta pill */
+.btn-primary {
+  background: var(--gold-300);
+  color: #FFFFFF;
+  border-color: var(--gold-300);
+  font-weight: 600;
+  border-radius: 999px;
+}
+.btn-primary:hover {
+  background: var(--gold-500);
+  border-color: var(--gold-500);
+  color: #FFFFFF;
+}
+
+/* CTA final, graphite -> true brand black with magenta glow */
+.cta-final {
+  background: #010012;
+  border-color: #15132B;
+}
+.cta-final .wash {
+  background: radial-gradient(closest-side, rgba(229,52,139,0.35), transparent 70%);
+}
+.cta-final h2 .em { color: var(--gold-300); font-style: normal; font-weight: 600; }
+
+/* Hero card (dark service card) use brand black */
+.service-card.hero-card {
+  background: #010012;
+  border-color: #15132B;
+}
+.service-card.hero-card .eyebrow { color: var(--gold-300); }
+.service-card.hero-card .cta-link { border-color: var(--gold-300); }
+.service-card.hero-card .viz svg circle[stroke*="199,168,107"] { stroke: rgba(229,52,139,0.3); }
+
+/* Accent dots, icons */
+.hero-eyebrow .dot { box-shadow: 0 0 0 4px rgba(229,52,139,0.2); }
+.pillar .icon { color: var(--gold-300); }
+.why .icon { color: var(--gold-300); }
+.faq-item.open .faq-q .toggle { background: var(--gold-300); color: #FFFFFF; border-color: var(--gold-300); }
+
+/* Hero ticker becomes full width below the grid */
+.hero-ticker { grid-column: 1 / -1; }
+
+.hero-copy { min-width: 0; }
+
+/* Hero video frame */
+.hero-video { position: relative; aspect-ratio: 1 / 1; max-width: 520px; justify-self: end; width: 100%; }
+@media (max-width: 1024px) { .hero-video { justify-self: center; max-width: 460px; } }
+.hero-video .hv-halo {
+  position: absolute; inset: -12%;
+  background: radial-gradient(closest-side, rgba(229,52,139,0.35), transparent 70%);
+  filter: blur(40px);
+  animation: hv-breath 6s ease-in-out infinite alternate;
+  pointer-events: none;
+  z-index: 0;
+}
+@keyframes hv-breath { 0% { opacity: 0.6; transform: scale(0.95); } 100% { opacity: 1; transform: scale(1.05); } }
+.hero-video .hv-frame {
+  position: relative;
+  width: 100%; height: 100%;
+  border-radius: 32px;
+  overflow: hidden;
+  background: #000;
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow:
+    0 40px 80px -30px rgba(229,52,139,0.3),
+    0 20px 60px -20px rgba(0,0,0,0.6),
+    inset 0 1px 1px rgba(255,255,255,0.06);
+  z-index: 1;
+}
+.hero-video video {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.hero-video .hv-glass {
+  position: absolute; inset: 0;
+  background: linear-gradient(145deg, rgba(255,255,255,0.04) 0%, transparent 40%);
+  pointer-events: none;
+}
+.hero-video .hv-badge {
+  position: absolute; left: 16px; bottom: 16px;
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 8px 14px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: #FFFFFF;
+  background: rgba(0,0,0,0.55);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 999px;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  z-index: 2;
+}
+.hero-video .hv-badge .pulse {
+  width: 6px; height: 6px; border-radius: 999px; background: #E5348B;
+  box-shadow: 0 0 0 0 rgba(229,52,139,0.7);
+  animation: hv-pulse 1.8s ease-out infinite;
+}
+@keyframes hv-pulse { 0% { box-shadow: 0 0 0 0 rgba(229,52,139,0.7); } 70% { box-shadow: 0 0 0 10px rgba(229,52,139,0); } 100% { box-shadow: 0 0 0 0 rgba(229,52,139,0); } }
+
+/* Logo wordmark with image */
+.brand img { filter: none; transition: opacity .2s ease; }
+.brand:hover img { opacity: 0.9; }
+[data-theme="light"] .topbar .brand img { content: url('assets/logo-horizontal-preto.png'); }
+
+@media (max-width: 1024px) { .hero-inner { grid-template-columns: 1fr !important; gap: 48px !important; } }
+
+
+/* Hero title colors */
+.hero-title { color: var(--fg-1); }
+
+/* Ticker cell accent border uses magenta */
+.ticker-cell.feat::before { background: var(--gold-300); }
+.ticker-cell.feat { background: linear-gradient(180deg, rgba(229,52,139,0.08), transparent); }
+
+/* Eyebrow line accent */
+.eb-row::before { background: var(--gold-300); }
+
+/* Quote marks in serif become magenta */
+.testi .quote-mark, .case-card .quote::before { color: var(--gold-300); }
+
+/* Case metric unit in magenta */
+.case-card .metric-big .unit { color: var(--gold-300); }
+
+/* Footer social hover */
+.footer-socials a:hover { border-color: var(--gold-300); color: var(--gold-300); }
+
+/* Method step hover arrow */
+.step:hover .arrow { color: var(--gold-300); }
+
+/* Eco item hover */
+.eco-item:hover { border-color: var(--gold-300); }
+
+/* Nav active underline */
+.nav-links a.active::after { background: var(--gold-300); }
+
+/* Selection */
+::selection { background: var(--gold-300); color: #FFFFFF; }

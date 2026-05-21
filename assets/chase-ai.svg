@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 64" fill="none">
+  
+  <g transform="translate(12,14)">
+    <rect x="2" y="2" width="32" height="32" rx="4" stroke="currentColor" stroke-width="2" fill="none"></rect>
+    <path d="M10 18 L22 18 L18 14 M22 18 L18 22" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"></path>
+  </g>
+  <text x="60" y="32" font-family="Inter Tight, sans-serif" font-size="22" font-weight="600" letter-spacing="-0.01em" fill="currentColor">Chase</text>
+  <text x="132" y="32" font-family="Fraunces, Georgia, serif" font-style="italic" font-size="22" font-weight="500" fill="currentColor" opacity="0.55">AI</text>
+</svg>

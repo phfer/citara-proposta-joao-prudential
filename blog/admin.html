@@ -1,0 +1,1033 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Painel · Frequência Cítara</title>
+<link rel="stylesheet" href="../ds/colors_and_type.css">
+<link rel="stylesheet" href="../ds/tokens.css">
+<link rel="stylesheet" href="../brand.css">
+<link rel="stylesheet" href="admin.css">
+<style>
+  /* page-level overrides */
+  :root { --ease-standard: cubic-bezier(0.22, 1, 0.36, 1); }
+  body { font-family: 'Montserrat', system-ui, sans-serif; }
+</style>
+</head>
+<body class="adm" data-theme="dark">
+
+<!-- ================================== LOGIN ================================== -->
+<section class="adm-login" id="login">
+  <div class="adm-login-card">
+    <img src="../assets/logo-horizontal-branco.png" alt="Cítara" style="height: 26px;" class="logo">
+    <div class="ey">Painel editorial · Frequência</div>
+    <h1>Bom te ver de novo.</h1>
+    <p class="sub">Entre como Marcelo ou PH para gerenciar matérias da Frequência. Cada autor mantém seu fluxo separado de rascunhos e publicações.</p>
+
+    <div class="adm-userpick" id="userpick">
+      <button data-user="marcelo">
+        <span class="av" style="background: linear-gradient(135deg, #E5348B, #CC3366);">M</span>
+        <span>
+          <div class="who">Marcelo</div>
+          <div class="role">Editor-chefe</div>
+        </span>
+      </button>
+      <button data-user="ph">
+        <span class="av" style="background: linear-gradient(135deg, #4ADE80, #2F7D5B);">PH</span>
+        <span>
+          <div class="who">PH</div>
+          <div class="role">Co-editor</div>
+        </span>
+      </button>
+    </div>
+
+    <input type="password" class="adm-input" id="pwd" placeholder="Senha de acesso" value="citara2026">
+    <button class="adm-btn" id="enter">Entrar no painel →</button>
+    <div class="hint">DEMO · senha pré-preenchida · qualquer valor entra</div>
+  </div>
+</section>
+
+<!-- ================================== APP ================================== -->
+<div class="adm-app" id="app">
+
+  <!-- ================== SIDEBAR ================== -->
+  <aside class="adm-side">
+    <div class="brand">
+      <img src="../assets/logo-horizontal-branco.png" alt="Cítara">
+    </div>
+    <div class="adm-nav-section">Conteúdo</div>
+    <nav class="adm-nav" id="navlist">
+      <a class="adm-nav-item on" data-view="list">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        Todas as matérias
+        <span class="count" id="cnt-all">0</span>
+      </a>
+      <a class="adm-nav-item" data-view="list" data-filter="draft">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>
+        Rascunhos
+        <span class="count" id="cnt-draft">0</span>
+      </a>
+      <a class="adm-nav-item" data-view="list" data-filter="scheduled">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        Agendadas
+        <span class="count" id="cnt-sched">0</span>
+      </a>
+      <a class="adm-nav-item" data-view="list" data-filter="published">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+        Publicadas
+        <span class="count" id="cnt-pub">0</span>
+      </a>
+
+      <div class="adm-nav-section">Editoria</div>
+      <a class="adm-nav-item" data-view="list" data-cat="Performance">
+        <span style="width: 8px; height: 8px; background: #FF1E84; border-radius: 50%; margin-right: 4px;"></span>
+        Performance
+      </a>
+      <a class="adm-nav-item" data-view="list" data-cat="I.A.">
+        <span style="width: 8px; height: 8px; background: #4ADE80; border-radius: 50%; margin-right: 4px;"></span>
+        I.A.
+      </a>
+      <a class="adm-nav-item" data-view="list" data-cat="Branding">
+        <span style="width: 8px; height: 8px; background: #F59E0B; border-radius: 50%; margin-right: 4px;"></span>
+        Branding
+      </a>
+      <a class="adm-nav-item" data-view="list" data-cat="CRM">
+        <span style="width: 8px; height: 8px; background: #60A5FA; border-radius: 50%; margin-right: 4px;"></span>
+        CRM
+      </a>
+      <a class="adm-nav-item" data-view="list" data-cat="Cases">
+        <span style="width: 8px; height: 8px; background: #C084FC; border-radius: 50%; margin-right: 4px;"></span>
+        Cases
+      </a>
+    </nav>
+
+    <div class="me" id="me">
+      <span class="av" id="me-av">M</span>
+      <span>
+        <div class="who" id="me-name">Marcelo</div>
+        <div class="role" id="me-role">Editor-chefe</div>
+      </span>
+      <span class="x" id="logout" title="Sair">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></svg>
+      </span>
+    </div>
+  </aside>
+
+  <!-- ================== MAIN ================== -->
+  <main class="adm-main">
+
+    <!-- ============ LIST VIEW ============ -->
+    <section class="adm-view" id="view-list">
+      <div class="adm-topbar">
+        <div>
+          <div class="sub" id="list-sub">Painel · Visão geral</div>
+          <h2 id="list-title">Olá, Marcelo.</h2>
+        </div>
+        <div class="actions">
+          <a class="adm-cta ghost" href="index.html" target="_blank">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6M10 14L21 3"/></svg>
+            Ver blog público
+          </a>
+          <button class="adm-cta" id="newpost">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+            Nova matéria
+          </button>
+        </div>
+      </div>
+
+      <!-- KPIs -->
+      <div class="adm-kpis">
+        <div class="adm-kpi">
+          <div class="lbl">Posts publicados</div>
+          <div class="v" id="kpi-pub">0</div>
+          <div class="delta">↑ +3 esta semana</div>
+        </div>
+        <div class="adm-kpi">
+          <div class="lbl">Visitas (30d)</div>
+          <div class="v" id="kpi-views">12,4<span class="u">k</span></div>
+          <div class="delta">↑ +18% vs período anterior</div>
+        </div>
+        <div class="adm-kpi">
+          <div class="lbl">Tempo médio leitura</div>
+          <div class="v">4:32</div>
+          <div class="delta">↑ +0:42 vs mês passado</div>
+        </div>
+        <div class="adm-kpi">
+          <div class="lbl">Inscritos newsletter</div>
+          <div class="v" id="kpi-subs">3.412</div>
+          <div class="delta">↑ +127 últimos 7 dias</div>
+        </div>
+      </div>
+
+      <!-- Table -->
+      <div class="adm-table">
+        <div class="adm-table-tabs">
+          <div class="adm-tab on" data-tab="all">Todas <span class="count" id="tab-all">0</span></div>
+          <div class="adm-tab" data-tab="mine">Minhas</div>
+          <div class="adm-tab" data-tab="draft">Rascunhos <span class="count" id="tab-draft">0</span></div>
+          <div class="adm-tab" data-tab="scheduled">Agendadas <span class="count" id="tab-sched">0</span></div>
+          <div class="adm-tab" data-tab="published">Publicadas <span class="count" id="tab-pub">0</span></div>
+        </div>
+        <div class="adm-filter">
+          <input type="text" class="search" id="search" placeholder="Buscar por título, autor, tag…">
+          <select id="filter-cat">
+            <option value="">Todas as editorias</option>
+            <option>Performance</option>
+            <option>I.A.</option>
+            <option>Branding</option>
+            <option>CRM</option>
+            <option>Cases</option>
+          </select>
+          <select id="filter-sort">
+            <option value="updated">Última edição</option>
+            <option value="created">Mais recente</option>
+            <option value="views">Mais lida</option>
+            <option value="title">A → Z</option>
+          </select>
+        </div>
+        <div class="adm-row head">
+          <div>Título / editoria</div>
+          <div>Autor</div>
+          <div>Status</div>
+          <div>Atualização</div>
+          <div></div>
+        </div>
+        <div id="rowlist"></div>
+      </div>
+    </section>
+
+    <!-- ============ EDITOR VIEW ============ -->
+    <section class="adm-editor" id="view-editor">
+      <div class="adm-edit-main">
+        <!-- Back + breadcrumb -->
+        <div class="adm-topbar" style="margin-bottom: 16px;">
+          <div>
+            <div class="sub" style="display: flex; align-items: center; gap: 8px; cursor: pointer;" id="back-list">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+              Voltar para a lista
+            </div>
+            <h2 style="font-size: 20px; margin-top: 8px;" id="edit-breadcrumb">Nova matéria</h2>
+          </div>
+        </div>
+
+        <!-- Title + deck -->
+        <div class="adm-section">
+          <h3>Matéria</h3>
+          <textarea class="adm-title-input" id="ed-title" rows="2" placeholder="Título da matéria…"></textarea>
+          <textarea class="adm-deck-input" id="ed-deck" rows="2" placeholder="Linha-fina (subtítulo editorial, ~140 caracteres)"></textarea>
+        </div>
+
+        <!-- Origem -->
+        <div class="adm-section">
+          <h3>Origem da pauta</h3>
+          <p style="color: rgba(255,255,255,0.55); font-size: 13px; margin: 0 0 14px;">Como essa matéria nasceu? Isso ajuda a manter o tom certo e creditar fontes.</p>
+          <div class="adm-source" id="source">
+            <button data-src="case" class="on">
+              <span class="lbl">Case interno</span>
+              <span class="desc">War room / cliente</span>
+            </button>
+            <button data-src="research">
+              <span class="lbl">Pesquisa própria</span>
+              <span class="desc">Dados Cítara</span>
+            </button>
+            <button data-src="reaction">
+              <span class="lbl">Reação a tendência</span>
+              <span class="desc">Mercado / setor</span>
+            </button>
+            <button data-src="playbook">
+              <span class="lbl">Playbook</span>
+              <span class="desc">Método / how-to</span>
+            </button>
+            <button data-src="interview">
+              <span class="lbl">Entrevista</span>
+              <span class="desc">Founder / cliente</span>
+            </button>
+            <button data-src="opinion">
+              <span class="lbl">Opinião</span>
+              <span class="desc">Manifesto editorial</span>
+            </button>
+          </div>
+          <div class="adm-fields cols-2">
+            <div class="adm-field">
+              <label>Cliente / fonte de referência</label>
+              <input type="text" id="ed-source-ref" placeholder="Ex: Sergi Romero, Bauen Invest, dado interno…">
+            </div>
+            <div class="adm-field">
+              <label>Janela do dado / fato</label>
+              <input type="text" id="ed-source-when" placeholder="Ex: out-2025 a mar-2026">
+            </div>
+          </div>
+        </div>
+
+        <!-- Body -->
+        <div class="adm-section">
+          <h3>Corpo do texto</h3>
+          <div class="adm-body-toolbar">
+            <button data-cmd="bold" title="Negrito"><b>B</b></button>
+            <button data-cmd="italic" title="Itálico"><i>I</i></button>
+            <button data-cmd="underline" title="Sublinhado" style="text-decoration: underline;">U</button>
+            <span class="sep"></span>
+            <button data-cmd="formatBlock" data-arg="h2" title="Heading">H2</button>
+            <button data-cmd="formatBlock" data-arg="h3" title="Subheading">H3</button>
+            <button data-cmd="formatBlock" data-arg="blockquote" title="Pull-quote">❝</button>
+            <span class="sep"></span>
+            <button data-cmd="insertUnorderedList" title="Lista">•</button>
+            <button data-cmd="insertOrderedList" title="Numerada">1.</button>
+            <span class="sep"></span>
+            <button data-cmd="createLink" title="Link">🔗</button>
+            <button data-cmd="insertHorizontalRule" title="Divisória">―</button>
+            <span class="sep" style="margin-left: auto;"></span>
+            <button id="insert-stat" title="Inserir métrica">📊 Métrica</button>
+            <button id="insert-quote" title="Inserir citação">"" Citação</button>
+          </div>
+          <div class="adm-body" id="ed-body" contenteditable="true" data-placeholder="Comece a escrever a matéria aqui. Use a barra acima para formatar — H2 para subtítulos, ❝ para pull-quotes, 📊 para inserir métricas inline.">
+          </div>
+          <div style="display: flex; justify-content: space-between; margin-top: 8px; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.4); letter-spacing: 0.1em;">
+            <span><span id="ed-words">0</span> PALAVRAS · <span id="ed-time">0</span> MIN DE LEITURA</span>
+            <span id="ed-chars">0 / ∞ caracteres</span>
+          </div>
+        </div>
+
+        <!-- Mídia -->
+        <div class="adm-section">
+          <h3>Foto de capa</h3>
+          <div class="adm-cover" id="cover">
+            <div class="ph">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+              <div class="l">Arrastar imagem ou clicar para enviar</div>
+              <div class="s">JPG · PNG · WEBP · até 4MB · 1920×1080 ideal</div>
+            </div>
+          </div>
+
+          <h3 style="margin-top: 24px;">Galeria interna (até 8 imagens)</h3>
+          <div class="adm-gallery" id="gallery">
+            <div class="slot filled"></div>
+            <div class="slot filled"></div>
+            <div class="slot">+</div>
+            <div class="slot">+</div>
+            <div class="slot">+</div>
+            <div class="slot">+</div>
+            <div class="slot">+</div>
+            <div class="slot">+</div>
+          </div>
+        </div>
+
+        <!-- SEO + Social copy -->
+        <div class="adm-section">
+          <h3>Distribuição</h3>
+          <div class="adm-fields">
+            <div class="adm-field">
+              <label>SEO · Title (máx. 60)</label>
+              <input type="text" id="ed-seotitle" maxlength="80" placeholder="Aparece na aba do navegador e no Google">
+              <div class="counter" id="cnt-seotitle">0 / 60</div>
+            </div>
+            <div class="adm-field">
+              <label>SEO · Meta description (máx. 158)</label>
+              <textarea id="ed-seodesc" rows="2" maxlength="200" placeholder="Resumo de 1-2 linhas que aparece no Google"></textarea>
+              <div class="counter" id="cnt-seodesc">0 / 158</div>
+            </div>
+            <div class="adm-fields cols-2">
+              <div class="adm-field">
+                <label>Slug da URL</label>
+                <input type="text" id="ed-slug" placeholder="como-reduzir-cac-em-90-dias">
+                <div class="hint">/blog/<span id="slug-preview">como-reduzir-cac-em-90-dias</span></div>
+              </div>
+              <div class="adm-field">
+                <label>Categoria</label>
+                <select id="ed-cat">
+                  <option>Performance</option>
+                  <option>I.A.</option>
+                  <option>Branding</option>
+                  <option>CRM</option>
+                  <option>Cases</option>
+                </select>
+              </div>
+            </div>
+            <div class="adm-field">
+              <label>Tags (até 6)</label>
+              <div class="adm-tags" id="tagsbox">
+                <span class="adm-tag">CAC <span class="x">×</span></span>
+                <span class="adm-tag">Meta Ads <span class="x">×</span></span>
+                <input type="text" placeholder="Adicionar tag + Enter…" id="tag-input">
+              </div>
+            </div>
+            <div class="adm-field">
+              <label>Copy para LinkedIn (suggest. ~280 caracteres)</label>
+              <textarea id="ed-li" rows="3" placeholder="Como você anunciaria essa matéria no LinkedIn?"></textarea>
+            </div>
+            <div class="adm-field">
+              <label>Copy para Instagram / WhatsApp</label>
+              <textarea id="ed-ig" rows="3" placeholder="Versão mais direta, com gancho visual"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ SIDEBAR (sticky publish) ============ -->
+      <aside class="adm-edit-side">
+        <div class="adm-publish">
+          <div class="save-state">
+            <span class="pulse"></span>
+            <span id="save-state-text">Rascunho salvo · há 12s</span>
+          </div>
+
+          <div class="adm-publish-row"><span class="k">Status</span><span class="v" id="pub-status">Rascunho</span></div>
+          <div class="adm-publish-row"><span class="k">Autor</span><span class="v" id="pub-author">Marcelo</span></div>
+          <div class="adm-publish-row"><span class="k">Editoria</span><span class="v" id="pub-cat">Performance</span></div>
+          <div class="adm-publish-row"><span class="k">Tempo leitura</span><span class="v" id="pub-rt">0 min</span></div>
+          <div class="adm-publish-row"><span class="k">Visibilidade</span><span class="v">Pública</span></div>
+
+          <div style="margin-top: 16px;">
+            <div class="adm-fields">
+              <div class="adm-field">
+                <label>Quando publicar?</label>
+                <select id="ed-when">
+                  <option value="now">Agora mesmo</option>
+                  <option value="schedule">Agendar data e hora</option>
+                  <option value="draft">Manter como rascunho</option>
+                </select>
+              </div>
+              <div class="adm-field" id="schedule-field" style="display: none;">
+                <label>Data e hora</label>
+                <input type="datetime-local" id="ed-schedule">
+              </div>
+            </div>
+          </div>
+
+          <div class="adm-publish-buttons">
+            <button class="adm-cta" id="publish-btn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+              <span id="publish-label">Publicar matéria</span>
+            </button>
+            <button class="adm-cta ghost" id="preview-btn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              Pré-visualizar
+            </button>
+          </div>
+        </div>
+
+        <div class="adm-section">
+          <h3>SEO em tempo real</h3>
+          <div class="adm-seo">
+            <div class="row"><span class="l">Título</span><div class="b"><div class="f" id="seo-title-bar" style="width: 0%;"></div></div><span class="v" id="seo-title-v">0%</span></div>
+            <div class="row"><span class="l">Descrição</span><div class="b"><div class="f" id="seo-desc-bar" style="width: 0%;"></div></div><span class="v" id="seo-desc-v">0%</span></div>
+            <div class="row"><span class="l">Conteúdo</span><div class="b"><div class="f" id="seo-body-bar" style="width: 0%;"></div></div><span class="v" id="seo-body-v">0%</span></div>
+            <div class="row"><span class="l">Tags</span><div class="b"><div class="f" id="seo-tags-bar" style="width: 0%;"></div></div><span class="v" id="seo-tags-v">0%</span></div>
+            <div class="row" style="margin-top: 4px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.06);"><span class="l" style="font-weight: 600;">Score geral</span><div class="b"><div class="f" id="seo-total-bar" style="width: 0%;"></div></div><span class="v" id="seo-total-v">0/100</span></div>
+          </div>
+        </div>
+
+        <div class="adm-preview">
+          <div class="adm-preview-head">
+            <div class="lbl">Pré-visualização</div>
+            <div class="seg">
+              <button class="on" data-prev="card">Card</button>
+              <button data-prev="social">Social</button>
+            </div>
+          </div>
+          <div class="adm-preview-body" id="prev-body">
+            <div class="pcat" id="prev-cat">Performance</div>
+            <h4 class="ptitle" id="prev-title">Título da matéria…</h4>
+            <p class="pdeck" id="prev-deck">Linha-fina aparece aqui assim que você começar a digitar.</p>
+            <div class="pmeta">
+              <span id="prev-author">Marcelo</span>
+              <span id="prev-rt">0 min</span>
+              <span id="prev-date">Hoje</span>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </section>
+  </main>
+</div>
+
+<div class="adm-toast" id="toast">✓ Salvo automaticamente</div>
+
+<script>
+/* =========================================================
+   STATE
+   ========================================================= */
+const USERS = {
+  marcelo: { name: 'Marcelo', role: 'Editor-chefe', av: 'M', avBg: 'linear-gradient(135deg, #E5348B, #CC3366)' },
+  ph:      { name: 'PH',       role: 'Co-editor',     av: 'PH', avBg: 'linear-gradient(135deg, #4ADE80, #2F7D5B)' }
+};
+
+const SEED_POSTS = [
+  {
+    id: 'p1', title: 'Como cortamos o CAC do Sergi Romero em 41% com criativos por persona',
+    deck: 'Três meses, 18 grupos de criativos, dashboard único. O que aprendemos rodando Meta Ads para moda masculina premium.',
+    author: 'marcelo', cat: 'Cases', tags: ['CAC', 'Meta Ads', 'Moda'],
+    status: 'published', date: '2026-04-18', views: 1842, rt: 6, source: 'case',
+    body: '<p>Por trás de uma queda de 41% no custo por aquisição não há mágica algorítmica. Há disciplina de criativos, taxonomia limpa e um war room que se reúne toda quinta. Esse é o relato do que rodamos com a Sergi Romero entre janeiro e março.</p><h2>O ponto de partida</h2><p>Quando assumimos a operação, a marca rodava com 3 conjuntos de criativos genéricos e CAC médio de R$ 142. A primeira hipótese foi simples: separar por persona.</p>'
+  },
+  {
+    id: 'p2', title: 'Cítara A.I. — por que estamos lançando o braço de IA da agência',
+    deck: 'Não é hype. É operação. Onde IA já está rodando dentro da Cítara, e onde acreditamos que ela ainda não entrega.',
+    author: 'marcelo', cat: 'I.A.', tags: ['IA', 'Automação', 'n8n'],
+    status: 'published', date: '2026-04-12', views: 2410, rt: 8, source: 'opinion',
+    body: '<p>Toda agência hoje tem uma página falando de IA. Quase nenhuma tem 6 fluxos rodando em produção. A Cítara A.I. nasce dessa diferença.</p>'
+  },
+  {
+    id: 'p3', title: 'Server-side tagging com GTM: o checklist que usamos em toda conta nova',
+    deck: 'iOS 17, ATT, GA4 e Conversion API. Os 14 passos que rodamos antes de subir qualquer campanha em 2026.',
+    author: 'ph', cat: 'Performance', tags: ['GTM', 'GA4', 'Server-side'],
+    status: 'published', date: '2026-04-08', views: 987, rt: 9, source: 'playbook',
+    body: '<p>Tagueamento client-side virou nice-to-have. Sem server-side, você está deixando entre 18% e 32% das conversões em cima da mesa.</p>'
+  },
+  {
+    id: 'p4', title: 'O método Cítara em 5 etapas — entrega em 30 dias',
+    deck: 'Diagnóstico, hipótese, instrumentação, execução, escala. Como uma operação de performance sai do briefing ao funil instrumentado em um mês.',
+    author: 'marcelo', cat: 'Performance', tags: ['Método', 'Onboarding', 'Funil'],
+    status: 'published', date: '2026-03-29', views: 3120, rt: 7, source: 'playbook',
+    body: '<p>Toda nova conta na Cítara começa pelo mesmo lugar: a folha em branco do diagnóstico. Aqui está o passo-a-passo público.</p>'
+  },
+  {
+    id: 'p5', title: 'Branding para health: o que muda quando o paciente também é o pagador',
+    deck: 'Identidade visual de clínicas premium pede outra disciplina. Lições do projeto que fizemos para a Clínica Gomes.',
+    author: 'ph', cat: 'Branding', tags: ['Health', 'Identidade'],
+    status: 'draft', date: '2026-04-22', views: 0, rt: 5, source: 'case',
+    body: '<p>Health é o setor onde a marca é vista no momento de maior vulnerabilidade do consumidor. Isso muda toda a régua de design.</p>'
+  },
+  {
+    id: 'p6', title: 'Pipeline em Kommo + WhatsApp: a arquitetura que funciona',
+    deck: 'O CRM mais subutilizado do Brasil. 7 automações de Kommo + n8n que mudam a vida do time comercial.',
+    author: 'ph', cat: 'CRM', tags: ['Kommo', 'n8n', 'WhatsApp'],
+    status: 'scheduled', date: '2026-04-26', views: 0, rt: 11, source: 'playbook',
+    body: '<p>Kommo é potente, mas vem nu. Sem essas 7 automações, ele é uma planilha glorificada. Com elas, dá um salto qualitativo no comercial.</p>'
+  },
+  {
+    id: 'p7', title: 'Bauen Invest: do zero a R$ 18 milhões em captação em 6 meses',
+    deck: 'Como estruturamos a operação de mídia da Bauen Invest dentro do framework CVM 160 — meta financeira, criativos auditáveis, atribuição.',
+    author: 'marcelo', cat: 'Cases', tags: ['Investimentos', 'CVM', 'Performance'],
+    status: 'draft', date: '2026-04-23', views: 0, rt: 8, source: 'case',
+    body: '<p>Captar offer regulada não é igual a vender SaaS. Aqui, cada criativo passa por jurídico antes do Meta Ads.</p>'
+  },
+  {
+    id: 'p8', title: 'A morte do criativo único — por que sua conta precisa de 12 versões por semana',
+    deck: 'A fadiga criativa em 2026 é mais rápida do que nunca. O ritmo que mantemos para sustentar ROAS acima de 4x.',
+    author: 'marcelo', cat: 'Performance', tags: ['Criativos', 'Fadiga', 'ROAS'],
+    status: 'published', date: '2026-04-02', views: 2847, rt: 6, source: 'research',
+    body: '<p>Em 2020, um bom criativo durava 3 meses. Em 2024, durava 3 semanas. Em 2026, dura 9 dias. Eis os dados.</p>'
+  }
+];
+
+let state = {
+  user: null,
+  posts: [],
+  view: 'list',           // list | editor
+  filter: 'all',          // all | mine | draft | scheduled | published
+  search: '',
+  filterCat: '',
+  sort: 'updated',
+  editing: null
+};
+
+/* =========================================================
+   PERSISTENCE
+   ========================================================= */
+function loadPosts() {
+  try {
+    const raw = localStorage.getItem('citara-admin-posts');
+    if (raw) state.posts = JSON.parse(raw);
+    else { state.posts = [...SEED_POSTS]; savePosts(); }
+  } catch { state.posts = [...SEED_POSTS]; }
+}
+function savePosts() {
+  localStorage.setItem('citara-admin-posts', JSON.stringify(state.posts));
+}
+
+/* =========================================================
+   LOGIN
+   ========================================================= */
+const userpick = document.getElementById('userpick');
+let pickedUser = 'marcelo';
+userpick.querySelectorAll('button').forEach(b => {
+  b.addEventListener('click', () => {
+    userpick.querySelectorAll('button').forEach(x => x.classList.remove('on'));
+    b.classList.add('on');
+    pickedUser = b.dataset.user;
+  });
+});
+userpick.querySelector('button').classList.add('on');
+
+document.getElementById('enter').addEventListener('click', () => {
+  state.user = pickedUser;
+  localStorage.setItem('citara-admin-user', pickedUser);
+  document.getElementById('login').style.display = 'none';
+  document.getElementById('app').classList.add('on');
+  applyUser();
+  renderList();
+});
+document.getElementById('pwd').addEventListener('keydown', e => {
+  if (e.key === 'Enter') document.getElementById('enter').click();
+});
+// auto-login if persisted
+const stored = localStorage.getItem('citara-admin-user');
+if (stored && USERS[stored]) {
+  state.user = stored;
+  document.getElementById('login').style.display = 'none';
+  document.getElementById('app').classList.add('on');
+}
+
+document.getElementById('logout').addEventListener('click', () => {
+  localStorage.removeItem('citara-admin-user');
+  state.user = null;
+  document.getElementById('login').style.display = 'grid';
+  document.getElementById('app').classList.remove('on');
+});
+
+function applyUser() {
+  const u = USERS[state.user];
+  if (!u) return;
+  document.getElementById('me-av').textContent = u.av;
+  document.getElementById('me-av').style.background = u.avBg;
+  document.getElementById('me-name').textContent = u.name;
+  document.getElementById('me-role').textContent = u.role;
+  document.getElementById('list-title').textContent = `Olá, ${u.name}.`;
+  document.getElementById('pub-author').textContent = u.name;
+  document.getElementById('prev-author').textContent = u.name;
+}
+
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
+const navItems = document.querySelectorAll('.adm-nav-item');
+navItems.forEach(it => {
+  it.addEventListener('click', e => {
+    e.preventDefault();
+    navItems.forEach(x => x.classList.remove('on'));
+    it.classList.add('on');
+    const f = it.dataset.filter;
+    const c = it.dataset.cat;
+    state.filter = f || 'all';
+    state.filterCat = c || '';
+    showView('list');
+    renderList();
+  });
+});
+
+function showView(v) {
+  state.view = v;
+  document.getElementById('view-list').style.display = v === 'list' ? 'block' : 'none';
+  document.getElementById('view-editor').classList.toggle('on', v === 'editor');
+}
+
+document.getElementById('back-list').addEventListener('click', () => {
+  showView('list');
+  renderList();
+});
+
+document.getElementById('newpost').addEventListener('click', () => openEditor(null));
+
+/* =========================================================
+   LIST RENDERING
+   ========================================================= */
+function renderList() {
+  loadPosts();
+  let posts = [...state.posts];
+
+  // Filters
+  if (state.filter === 'mine')      posts = posts.filter(p => p.author === state.user);
+  else if (state.filter === 'draft')     posts = posts.filter(p => p.status === 'draft');
+  else if (state.filter === 'scheduled') posts = posts.filter(p => p.status === 'scheduled');
+  else if (state.filter === 'published') posts = posts.filter(p => p.status === 'published');
+
+  if (state.filterCat) posts = posts.filter(p => p.cat === state.filterCat);
+
+  if (state.search) {
+    const q = state.search.toLowerCase();
+    posts = posts.filter(p =>
+      p.title.toLowerCase().includes(q) ||
+      (p.tags || []).some(t => t.toLowerCase().includes(q)) ||
+      USERS[p.author]?.name.toLowerCase().includes(q)
+    );
+  }
+
+  // Sort
+  if (state.sort === 'views')   posts.sort((a, b) => b.views - a.views);
+  else if (state.sort === 'title')   posts.sort((a, b) => a.title.localeCompare(b.title));
+  else                                posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+  // Render rows
+  const list = document.getElementById('rowlist');
+  if (!posts.length) {
+    list.innerHTML = `<div style="padding: 60px 20px; text-align: center; color: rgba(255,255,255,0.4); font-size: 13px;">
+      Nenhuma matéria nesse filtro. <span style="color: #E5348B; cursor: pointer; text-decoration: underline;" onclick="document.getElementById('newpost').click()">Criar nova</span>?
+    </div>`;
+  } else {
+    list.innerHTML = posts.map(p => {
+      const u = USERS[p.author] || USERS.marcelo;
+      const dateStr = formatDate(p.date);
+      return `
+        <div class="adm-row" data-id="${p.id}">
+          <div class="title">
+            <strong>${escapeHtml(p.title)}</strong>
+            <div class="meta"><span>${p.cat}</span><span>${p.rt} MIN</span><span>${p.views.toLocaleString('pt-BR')} VIEWS</span></div>
+          </div>
+          <div class="author ${p.author}"><span class="av">${u.av}</span><span class="name">${u.name}</span></div>
+          <div><span class="badge ${p.status}">${statusLabel(p.status)}</span></div>
+          <div class="when">${dateStr}</div>
+          <div class="row-act">
+            <button title="Editar" data-act="edit"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+            <button title="Duplicar" data-act="dup"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+          </div>
+        </div>`;
+    }).join('');
+
+    list.querySelectorAll('.adm-row').forEach(row => {
+      row.addEventListener('click', e => {
+        const id = row.dataset.id;
+        const act = e.target.closest('button')?.dataset.act;
+        if (act === 'dup') return duplicatePost(id);
+        openEditor(id);
+      });
+    });
+  }
+
+  // KPIs / counts
+  const all = state.posts;
+  const cntDraft = all.filter(p => p.status === 'draft').length;
+  const cntSched = all.filter(p => p.status === 'scheduled').length;
+  const cntPub   = all.filter(p => p.status === 'published').length;
+  document.getElementById('cnt-all').textContent = all.length;
+  document.getElementById('cnt-draft').textContent = cntDraft;
+  document.getElementById('cnt-sched').textContent = cntSched;
+  document.getElementById('cnt-pub').textContent = cntPub;
+  document.getElementById('tab-all').textContent = all.length;
+  document.getElementById('tab-draft').textContent = cntDraft;
+  document.getElementById('tab-sched').textContent = cntSched;
+  document.getElementById('tab-pub').textContent = cntPub;
+  document.getElementById('kpi-pub').textContent = cntPub;
+}
+
+function statusLabel(s) {
+  return { draft: 'Rascunho', scheduled: 'Agendada', published: 'Publicada' }[s] || s;
+}
+function formatDate(iso) {
+  const d = new Date(iso);
+  if (isNaN(d.getTime())) return iso;
+  const today = new Date();
+  const diff = Math.round((today - d) / (1000 * 60 * 60 * 24));
+  if (diff === 0) return 'Hoje';
+  if (diff === 1) return 'Ontem';
+  if (diff < 7 && diff > 0) return `Há ${diff}d`;
+  return d.toLocaleDateString('pt-BR', { day: '2-digit', month: 'short' });
+}
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[m]));
+}
+
+/* tabs */
+document.querySelectorAll('.adm-tab').forEach(t => {
+  t.addEventListener('click', () => {
+    document.querySelectorAll('.adm-tab').forEach(x => x.classList.remove('on'));
+    t.classList.add('on');
+    state.filter = t.dataset.tab;
+    renderList();
+  });
+});
+
+document.getElementById('search').addEventListener('input', e => {
+  state.search = e.target.value;
+  renderList();
+});
+document.getElementById('filter-cat').addEventListener('change', e => {
+  state.filterCat = e.target.value;
+  renderList();
+});
+document.getElementById('filter-sort').addEventListener('change', e => {
+  state.sort = e.target.value;
+  renderList();
+});
+
+function duplicatePost(id) {
+  const p = state.posts.find(x => x.id === id);
+  if (!p) return;
+  const dup = { ...p, id: 'p' + Date.now(), title: p.title + ' (cópia)', status: 'draft', views: 0, date: new Date().toISOString().slice(0, 10) };
+  state.posts.unshift(dup);
+  savePosts();
+  renderList();
+  showToast('✓ Matéria duplicada como rascunho');
+}
+
+/* =========================================================
+   EDITOR
+   ========================================================= */
+function openEditor(id) {
+  let p;
+  if (id) {
+    p = state.posts.find(x => x.id === id);
+    if (!p) return;
+  } else {
+    p = {
+      id: 'p' + Date.now(),
+      title: '', deck: '', body: '',
+      author: state.user, cat: 'Performance', tags: [],
+      status: 'draft', date: new Date().toISOString().slice(0, 10),
+      views: 0, rt: 0, source: 'case',
+      seoTitle: '', seoDesc: '', slug: '', li: '', ig: ''
+    };
+    state.posts.unshift(p);
+    savePosts();
+  }
+  state.editing = p.id;
+  showView('editor');
+
+  // Fill fields
+  document.getElementById('edit-breadcrumb').textContent = id ? 'Editando matéria' : 'Nova matéria';
+  document.getElementById('ed-title').value = p.title || '';
+  document.getElementById('ed-deck').value = p.deck || '';
+  document.getElementById('ed-body').innerHTML = p.body || '';
+  document.getElementById('ed-cat').value = p.cat || 'Performance';
+  document.getElementById('ed-seotitle').value = p.seoTitle || p.title || '';
+  document.getElementById('ed-seodesc').value = p.seoDesc || p.deck || '';
+  document.getElementById('ed-slug').value = p.slug || slugify(p.title);
+  document.getElementById('ed-li').value = p.li || '';
+  document.getElementById('ed-ig').value = p.ig || '';
+
+  // Source buttons
+  document.querySelectorAll('#source button').forEach(b => {
+    b.classList.toggle('on', b.dataset.src === (p.source || 'case'));
+  });
+
+  // Tags
+  renderTags(p.tags || []);
+
+  recalcEditor();
+}
+
+function slugify(t) {
+  return (t || '')
+    .toLowerCase()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9\s-]/g, '')
+    .trim().replace(/\s+/g, '-').slice(0, 64);
+}
+
+function renderTags(tags) {
+  const box = document.getElementById('tagsbox');
+  const input = document.getElementById('tag-input');
+  // Remove all existing tags except input
+  box.querySelectorAll('.adm-tag').forEach(t => t.remove());
+  tags.forEach(t => {
+    const el = document.createElement('span');
+    el.className = 'adm-tag';
+    el.innerHTML = `${escapeHtml(t)} <span class="x">×</span>`;
+    el.querySelector('.x').addEventListener('click', () => {
+      const p = state.posts.find(x => x.id === state.editing);
+      p.tags = p.tags.filter(x => x !== t);
+      savePosts();
+      renderTags(p.tags);
+      recalcEditor();
+    });
+    box.insertBefore(el, input);
+  });
+}
+
+document.getElementById('tag-input').addEventListener('keydown', e => {
+  if (e.key === 'Enter' && e.target.value.trim()) {
+    e.preventDefault();
+    const t = e.target.value.trim();
+    const p = state.posts.find(x => x.id === state.editing);
+    if (p && (p.tags || []).length < 6 && !(p.tags || []).includes(t)) {
+      p.tags = [...(p.tags || []), t];
+      savePosts();
+      renderTags(p.tags);
+      recalcEditor();
+    }
+    e.target.value = '';
+  }
+});
+
+// Source clicks
+document.querySelectorAll('#source button').forEach(b => {
+  b.addEventListener('click', () => {
+    document.querySelectorAll('#source button').forEach(x => x.classList.remove('on'));
+    b.classList.add('on');
+    const p = state.posts.find(x => x.id === state.editing);
+    if (p) { p.source = b.dataset.src; savePosts(); }
+  });
+});
+
+// Toolbar
+document.querySelectorAll('.adm-body-toolbar button[data-cmd]').forEach(b => {
+  b.addEventListener('click', () => {
+    const cmd = b.dataset.cmd;
+    const arg = b.dataset.arg;
+    if (cmd === 'createLink') {
+      const url = prompt('URL do link:');
+      if (url) document.execCommand(cmd, false, url);
+    } else {
+      document.execCommand(cmd, false, arg);
+    }
+    document.getElementById('ed-body').focus();
+  });
+});
+
+document.getElementById('insert-stat').addEventListener('click', () => {
+  const num = prompt('Número (ex: 41% ou 3,2x):');
+  if (!num) return;
+  const lbl = prompt('Legenda:');
+  if (!lbl) return;
+  const html = `<aside class="metric-inline" style="display: inline-block; padding: 16px 20px; background: rgba(229,52,139,0.08); border-left: 3px solid #E5348B; border-radius: 6px; margin: 8px 0; font-family: 'Fraunces', serif;"><strong style="font-size: 32px; font-weight: 500; color: #E5348B; letter-spacing: -0.02em;">${escapeHtml(num)}</strong><span style="display: block; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-top: 4px;">${escapeHtml(lbl)}</span></aside>`;
+  document.execCommand('insertHTML', false, html);
+});
+
+document.getElementById('insert-quote').addEventListener('click', () => {
+  const txt = prompt('Citação:');
+  if (!txt) return;
+  const author = prompt('Autor da citação (opcional):') || '';
+  const html = `<blockquote style="font-family: 'Fraunces', serif; font-size: 26px; line-height: 1.3; font-style: italic; color: #FFFFFF; border-left: 3px solid #E5348B; padding-left: 20px; margin: 24px 0;">"${escapeHtml(txt)}"${author ? `<footer style="font-style: normal; font-size: 13px; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-top: 12px;">— ${escapeHtml(author)}</footer>` : ''}</blockquote>`;
+  document.execCommand('insertHTML', false, html);
+});
+
+// Field auto-save
+['ed-title','ed-deck','ed-cat','ed-seotitle','ed-seodesc','ed-slug','ed-li','ed-ig'].forEach(id => {
+  document.getElementById(id).addEventListener('input', autoSave);
+});
+document.getElementById('ed-body').addEventListener('input', autoSave);
+
+let saveTimer;
+function autoSave() {
+  clearTimeout(saveTimer);
+  document.getElementById('save-state-text').textContent = 'Salvando…';
+  saveTimer = setTimeout(() => {
+    const p = state.posts.find(x => x.id === state.editing);
+    if (!p) return;
+    p.title = document.getElementById('ed-title').value;
+    p.deck = document.getElementById('ed-deck').value;
+    p.body = document.getElementById('ed-body').innerHTML;
+    p.cat = document.getElementById('ed-cat').value;
+    p.seoTitle = document.getElementById('ed-seotitle').value;
+    p.seoDesc = document.getElementById('ed-seodesc').value;
+    p.slug = document.getElementById('ed-slug').value || slugify(p.title);
+    p.li = document.getElementById('ed-li').value;
+    p.ig = document.getElementById('ed-ig').value;
+    p.date = new Date().toISOString().slice(0, 10);
+    savePosts();
+    document.getElementById('save-state-text').textContent = 'Rascunho salvo · agora';
+    recalcEditor();
+  }, 400);
+}
+
+function recalcEditor() {
+  const title = document.getElementById('ed-title').value;
+  const deck = document.getElementById('ed-deck').value;
+  const seoTitle = document.getElementById('ed-seotitle').value;
+  const seoDesc = document.getElementById('ed-seodesc').value;
+  const slug = document.getElementById('ed-slug').value || slugify(title);
+  const cat = document.getElementById('ed-cat').value;
+  const bodyText = document.getElementById('ed-body').innerText || '';
+  const words = bodyText.trim().split(/\s+/).filter(Boolean).length;
+  const rt = Math.max(1, Math.round(words / 200));
+
+  document.getElementById('ed-words').textContent = words.toLocaleString('pt-BR');
+  document.getElementById('ed-time').textContent = rt;
+  document.getElementById('ed-chars').textContent = bodyText.length.toLocaleString('pt-BR') + ' caracteres';
+
+  // SEO counters
+  const cTitle = document.getElementById('cnt-seotitle');
+  cTitle.textContent = `${seoTitle.length} / 60`;
+  cTitle.className = 'counter' + (seoTitle.length > 60 ? ' over' : seoTitle.length > 50 ? ' warn' : '');
+  const cDesc = document.getElementById('cnt-seodesc');
+  cDesc.textContent = `${seoDesc.length} / 158`;
+  cDesc.className = 'counter' + (seoDesc.length > 158 ? ' over' : seoDesc.length > 140 ? ' warn' : '');
+
+  document.getElementById('slug-preview').textContent = slug || 'sua-url-aqui';
+
+  // Sidebar
+  document.getElementById('pub-cat').textContent = cat;
+  document.getElementById('pub-rt').textContent = rt + ' min';
+
+  // Preview
+  document.getElementById('prev-cat').textContent = cat;
+  document.getElementById('prev-title').textContent = title || 'Título da matéria…';
+  document.getElementById('prev-deck').textContent = deck || 'Linha-fina aparece aqui assim que você começar a digitar.';
+  document.getElementById('prev-rt').textContent = rt + ' min';
+
+  // SEO bars
+  const p = state.posts.find(x => x.id === state.editing);
+  const tagCount = p ? (p.tags || []).length : 0;
+
+  const tScore = title.length > 0 ? Math.min(100, Math.round((Math.min(seoTitle.length, 60) / 60) * 100)) : 0;
+  const dScore = seoDesc.length > 0 ? Math.min(100, Math.round((Math.min(seoDesc.length, 158) / 158) * 100)) : 0;
+  const bScore = Math.min(100, Math.round((words / 600) * 100));
+  const tagScore = Math.min(100, Math.round((tagCount / 4) * 100));
+  const total = Math.round((tScore + dScore + bScore + tagScore) / 4);
+
+  setBar('seo-title', tScore);
+  setBar('seo-desc', dScore);
+  setBar('seo-body', bScore);
+  setBar('seo-tags', tagScore);
+  setBar('seo-total', total, total + '/100');
+
+  // Sync rt to data
+  if (p) { p.rt = rt; savePosts(); }
+}
+
+function setBar(prefix, score, valOverride) {
+  document.getElementById(prefix + '-bar').style.width = Math.min(100, Math.max(0, score)) + '%';
+  document.getElementById(prefix + '-v').textContent = valOverride || (score + '%');
+}
+
+// Schedule visibility
+document.getElementById('ed-when').addEventListener('change', e => {
+  const v = e.target.value;
+  document.getElementById('schedule-field').style.display = v === 'schedule' ? 'flex' : 'none';
+  const lbl = { now: 'Publicar agora', schedule: 'Agendar publicação', draft: 'Salvar rascunho' }[v];
+  document.getElementById('publish-label').textContent = lbl;
+});
+
+document.getElementById('publish-btn').addEventListener('click', () => {
+  const p = state.posts.find(x => x.id === state.editing);
+  if (!p) return;
+  const when = document.getElementById('ed-when').value;
+  if (when === 'now') { p.status = 'published'; p.date = new Date().toISOString().slice(0, 10); }
+  else if (when === 'schedule') {
+    const dt = document.getElementById('ed-schedule').value;
+    if (!dt) { alert('Escolha data e hora.'); return; }
+    p.status = 'scheduled'; p.date = dt.slice(0, 10);
+  }
+  else { p.status = 'draft'; }
+  document.getElementById('pub-status').textContent = statusLabel(p.status);
+  savePosts();
+  showToast(when === 'now' ? '✓ Matéria publicada' : when === 'schedule' ? '✓ Matéria agendada' : '✓ Rascunho salvo');
+  setTimeout(() => { showView('list'); renderList(); }, 800);
+});
+
+document.getElementById('preview-btn').addEventListener('click', () => {
+  showToast('Abrindo pré-visualização…');
+  setTimeout(() => window.open('post.html', '_blank'), 400);
+});
+
+// Preview seg
+document.querySelectorAll('.adm-preview-head .seg button').forEach(b => {
+  b.addEventListener('click', () => {
+    document.querySelectorAll('.adm-preview-head .seg button').forEach(x => x.classList.remove('on'));
+    b.classList.add('on');
+  });
+});
+
+// Toast
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('on');
+  setTimeout(() => t.classList.remove('on'), 1800);
+}
+
+// Cover upload (visual-only)
+document.getElementById('cover').addEventListener('click', () => {
+  showToast('Upload de imagem · demo');
+});
+
+/* =========================================================
+   INIT
+   ========================================================= */
+loadPosts();
+applyUser();
+renderList();
+</script>
+
+</body>
+</html>

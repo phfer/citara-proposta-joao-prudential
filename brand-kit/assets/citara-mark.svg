@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" fill="none">
+  
+  <circle cx="40" cy="40" r="39.25" stroke="currentColor" stroke-opacity="0.14" stroke-width="1.5"></circle>
+  <path d="M58 24C53.5 20 47.2 17.5 40 17.5C27.574 17.5 17.5 27.574 17.5 40C17.5 52.426 27.574 62.5 40 62.5C47.2 62.5 53.5 60 58 56" stroke="currentColor" stroke-width="3.25" stroke-linecap="round" fill="none"></path>
+  <path d="M52 30C49.5 27.8 45.2 26.25 40 26.25C32.406 26.25 26.25 32.406 26.25 40C26.25 47.594 32.406 53.75 40 53.75C45.2 53.75 49.5 52.2 52 50" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.55"></path>
+  
+  <circle cx="58" cy="40" r="2.25" fill="currentColor"></circle>
+</svg>

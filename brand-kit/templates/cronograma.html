@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<title>Cronograma — [Projeto] — [Cliente]</title>
+<link rel="stylesheet" href="_template.css">
+<style>
+  /* Cronograma-specific */
+  .timeline {
+    position: relative;
+    margin: 48px 0;
+    padding-left: 32px;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 8px; top: 8px; bottom: 8px;
+    width: 2px;
+    background: linear-gradient(180deg, var(--accent) 0%, var(--accent-3) 50%, var(--border) 100%);
+  }
+  .phase {
+    position: relative;
+    margin-bottom: 40px;
+    padding: 4px 0;
+  }
+  .phase::before {
+    content: '';
+    position: absolute;
+    left: -32px; top: 12px;
+    width: 18px; height: 18px;
+    border-radius: 999px;
+    background: var(--bg-page);
+    border: 3px solid var(--accent);
+    box-shadow: 0 0 0 4px rgba(229,52,139,0.12);
+  }
+  .phase.milestone::before {
+    background: var(--accent);
+    box-shadow: 0 0 0 6px rgba(229,52,139,0.18);
+  }
+  .phase .week {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 6px;
+  }
+  .phase h3 { margin-bottom: 8px; }
+  .phase .desc { color: var(--fg-2); margin-bottom: 12px; max-width: 64ch; }
+  .deliverables {
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: 10px; margin-top: 12px;
+  }
+  .deliv {
+    padding: 12px 14px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    font-size: 13px;
+    color: var(--fg-2);
+  }
+  .deliv strong { color: var(--fg-1); display: block; margin-bottom: 2px; }
+
+  /* Gantt-style horizontal bar */
+  .gantt {
+    margin: 32px 0;
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    overflow-x: auto;
+  }
+  .gantt-grid {
+    display: grid;
+    grid-template-columns: 180px repeat(8, 1fr);
+    gap: 4px;
+    min-width: 760px;
+  }
+  .gantt-grid .head {
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--fg-3);
+    padding: 8px 4px;
+    text-align: center;
+  }
+  .gantt-grid .head.lbl { text-align: left; padding-left: 4px; }
+  .gantt-grid .row-lbl {
+    padding: 14px 4px;
+    font-size: 13px; font-weight: 600;
+    color: var(--fg-1);
+    border-top: 1px solid var(--border);
+  }
+  .gantt-grid .bar {
+    grid-column-end: span var(--span, 2);
+    margin: 14px 0;
+    height: 24px;
+    background: linear-gradient(90deg, var(--accent) 0%, var(--accent-2) 100%);
+    border-radius: 6px;
+    position: relative;
+    border-top: 1px solid var(--border);
+  }
+  .gantt-grid .bar.soft {
+    background: rgba(229,52,139,0.18);
+    border: 1px solid var(--border-strong);
+  }
+  .gantt-grid .cell {
+    border-top: 1px solid var(--border);
+  }
+</style>
+</head>
+<body>
+
+<section class="cover">
+  <div class="top">
+    <div class="logo"><img src="../assets/logo-vertical-branco.png" alt="Cítara"></div>
+    <div class="meta">
+      <div class="dim">Cronograma de Projeto</div>
+      <div>[Cliente]</div>
+      <div>[Início: 05/05/2026 · Fim: 30/06/2026]</div>
+    </div>
+  </div>
+
+  <div>
+    <div class="pill">Cronograma · 8 semanas</div>
+    <h1 class="title" style="margin-top:24px">Da hipótese ao <em>resultado</em>, em 4 fases.</h1>
+  </div>
+
+  <div class="bottom">
+    <p class="summary">Cada fase tem entregáveis claros, dono e prazo. Marcos em magenta. Sem fase pula sem aprovação do anterior.</p>
+    <div class="dim" style="font-size:11px;letter-spacing:0.14em;text-transform:uppercase">Cítara Marketing</div>
+  </div>
+</section>
+
+<section class="page">
+  <div class="eyebrow">Visão geral</div>
+  <h2 style="margin-top:8px">8 semanas, 4 fases.</h2>
+
+  <div class="gantt">
+    <div class="gantt-grid">
+      <div class="head lbl">Fase</div>
+      <div class="head">S1</div><div class="head">S2</div><div class="head">S3</div>
+      <div class="head">S4</div><div class="head">S5</div><div class="head">S6</div>
+      <div class="head">S7</div><div class="head">S8</div>
+
+      <div class="row-lbl">1 · Auditoria & Diagnóstico</div>
+      <div class="bar" style="--span:2"></div>
+      <div class="cell"></div><div class="cell"></div><div class="cell"></div>
+      <div class="cell"></div><div class="cell"></div><div class="cell"></div>
+
+      <div class="row-lbl">2 · Estratégia & Plano</div>
+      <div class="cell"></div><div class="cell"></div>
+      <div class="bar" style="--span:2"></div>
+      <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+
+      <div class="row-lbl">3 · Go-live</div>
+      <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+      <div class="bar" style="--span:2"></div>
+      <div class="cell"></div><div class="cell"></div>
+
+      <div class="row-lbl">4 · Otimização</div>
+      <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+      <div class="cell"></div><div class="cell"></div>
+      <div class="bar soft" style="--span:2"></div>
+    </div>
+  </div>
+</section>
+
+<section class="page">
+  <div class="eyebrow">Detalhamento por fase</div>
+  <h2 style="margin-top:8px">O que sai de cada fase.</h2>
+
+  <div class="timeline">
+    <div class="phase milestone">
+      <div class="week">Semana 1–2 · 05/05 — 16/05</div>
+      <h3>Fase 1 · Auditoria & Diagnóstico</h3>
+      <p class="desc">Levantamento completo: contas de mídia, tracking, funil, conteúdo, concorrência. Sem hipótese ainda — só leitura do real.</p>
+      <div class="deliverables">
+        <div class="deliv"><strong>Auditoria de mídia paga</strong>Diagnóstico Google + Meta + canais ativos</div>
+        <div class="deliv"><strong>Mapa de tracking</strong>GTM, GA4, pixels, server-side</div>
+        <div class="deliv"><strong>Análise de funil</strong>Top → middle → bottom, com gaps</div>
+        <div class="deliv"><strong>Benchmark competitivo</strong>3 concorrentes, posicionamento e mídia</div>
+      </div>
+    </div>
+
+    <div class="phase milestone">
+      <div class="week">Semana 3–4 · 19/05 — 30/05</div>
+      <h3>Fase 2 · Estratégia & Plano</h3>
+      <p class="desc">Hipóteses priorizadas, alocação de orçamento, KPIs por canal e calendário editorial dos próximos 90 dias.</p>
+      <div class="deliverables">
+        <div class="deliv"><strong>Plano estratégico</strong>Tese, KPIs, alocação por canal</div>
+        <div class="deliv"><strong>Backlog de hipóteses</strong>Priorizado por impacto/esforço</div>
+        <div class="deliv"><strong>Calendário editorial Q3</strong>SEO + social + e-mail</div>
+        <div class="deliv"><strong>Plano de criativos</strong>Briefing de 12 peças iniciais</div>
+      </div>
+    </div>
+
+    <div class="phase milestone">
+      <div class="week">Semana 5–6 · 02/06 — 13/06</div>
+      <h3>Fase 3 · Go-live</h3>
+      <p class="desc">Setup técnico, criativos no ar, campanhas pilotas rodando. Primeiros números chegam.</p>
+      <div class="deliverables">
+        <div class="deliv"><strong>Tracking server-side</strong>Conversions API + match rate &gt; 80%</div>
+        <div class="deliv"><strong>Campanhas piloto</strong>3 estruturas testadas em paralelo</div>
+        <div class="deliv"><strong>Criativos rodando</strong>12 peças nos canais ativos</div>
+        <div class="deliv"><strong>Dashboard ao vivo</strong>Looker Studio + alertas</div>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="week">Semana 7–8 · 16/06 — 30/06</div>
+      <h3>Fase 4 · Otimização & Relatório</h3>
+      <p class="desc">Análise dos primeiros 14 dias rodando, descarte do que não funcionou, escala do que validou. Relatório de ciclo.</p>
+      <div class="deliverables">
+        <div class="deliv"><strong>Análise de hipóteses</strong>Validadas vs descartadas</div>
+        <div class="deliv"><strong>Realocação orçamentária</strong>Concentração no que escala</div>
+        <div class="deliv"><strong>Relatório de ciclo</strong>Resultados + plano para próximo mês</div>
+        <div class="deliv"><strong>Reunião de revisão</strong>Apresentação executiva</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  <div style="display:flex;justify-content:space-between;align-items:center">
+    <div class="dim" style="font-size:11px;letter-spacing:0.14em;text-transform:uppercase">Cítara · Comunicação que ressoa, performance que se prova</div>
+    <div class="dim" style="font-size:11px">contato@citara.com</div>
+  </div>
+</section>
+
+</body>
+</html>
