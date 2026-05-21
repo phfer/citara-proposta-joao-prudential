@@ -7,3 +7,4 @@ node_modules/
 # Materiais brutos e rascunhos (não vão pro repositório público)
 uploads/
 scraps/
+.vercel
